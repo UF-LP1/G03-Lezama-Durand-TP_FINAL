@@ -1,0 +1,59 @@
+﻿  cBSA.cpp
+  cCentro.cpp
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,1): error C2665: 'std::vector<T,std::allocator<T>>::erase': ninguna de las 2 sobrecargas pudo convertir todos los tipos de argumento
+          with
+          [
+              T=cDonante *
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vector(1578,27): message : puede ser 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(<expr>)'
+          with
+          [
+              _Ty=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,6): message : 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(<expr>)': el argumento 1 no puede convertirse de 'T' a 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
+          with
+          [
+              _Ty=cDonante *
+          ]
+          and
+          [
+              T=cDonante *
+          ]
+          and
+          [
+              _Ty=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,1): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vector(1578,27): message : vea la declaración de 'std::vector<T,std::allocator<T>>::erase'
+          with
+          [
+              T=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,1): message : al hacer coincidir la lista de argumentos '(T)'
+          with
+          [
+              T=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(20): message : al compilar la función del miembro clase plantilla "void cVector<cDonante *>::operator -(T &)"
+          with
+          [
+              T=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(129): message : Vea la referencia a la creación de una instancia de la función plantilla "void cVector<cDonante *>::operator -(T &)" que se está compilando
+          with
+          [
+              T=cDonante *
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.h(14): message : Vea la referencia a la creación de una instancia de clase plantilla "cVector<cDonante *>" que se está compilando
+  cDonante.cpp
+  cFluidos.cpp
+  cMedulaOsea.cpp
+  cPaciente.cpp
+  cPlasma.cpp
+  cReceptor.cpp
+  cSangre.cpp
+  cVector.cpp
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.cpp(4,10): error C2995: 'std::ostream &operator <<(std::ostream &,const T &)': ya se ha definido la plantilla de función
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(30): message : vea la declaración de 'operator <<'
+  main.cpp
+  Generando código...

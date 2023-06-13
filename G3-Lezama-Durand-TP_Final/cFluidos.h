@@ -1,6 +1,7 @@
 #pragma once
 #include "Header.h"
-typedef enum TipoS{A=0,AB,B,O};
+
+enum TipoS{A=0,AB,B,O};
 
 class cFluidos{
 protected:
@@ -9,5 +10,6 @@ protected:
 public:
 	cFluidos();
 	~cFluidos();
+	TipoS get_tipo();
 };
 

@@ -9,3 +9,8 @@ cFluidos::~cFluidos()
 {
 
 }
+
+TipoS cFluidos::get_tipo()
+{
+	return this-> tipo;
+}
