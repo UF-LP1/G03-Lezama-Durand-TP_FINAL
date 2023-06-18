@@ -1,7 +1,7 @@
 #include "cReceptor.h"
 
-cReceptor::cReceptor(string nombre, string fecha, string tel, string dni, char sexo, string estado, time_t f_listaEsp, unsigned int prioridad):
-    cPaciente(nombre, fecha, tel, dni, sexo)
+cReceptor::cReceptor(string nombre, string fecha, string tel, string dni, char sexo, tipoE estado, time_t f_listaEsp, unsigned int 
+		   prioridad, cFluidos* fluido): cPaciente(nombre, fecha, tel, dni, sexo, fluido)
 {
     this->estado = estado;
     this->f_listaEsp = f_listaEsp;
@@ -23,9 +23,22 @@ time_t cReceptor::get_fecha()
     return this->f_listaEsp;
 }
 
-string cReceptor::get_estado()
+tipoE cReceptor::get_estado()
 {
     return this->estado;
+}
+
+void cReceptor::set_estado(tipoE estado)
+{
+	this->estado = estado;
+	return;
+
+}
+
+void cReceptor::set_prioridad(unsigned int prioridad)
+{
+	this->prioridad = prioridad;
+	return;
 }
 
 ostream& operator<<(ostream& out, const cReceptor& element) {

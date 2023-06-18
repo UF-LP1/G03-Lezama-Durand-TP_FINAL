@@ -1,8 +1,13 @@
 #pragma once
 #include "cFluidos.h"
-class cPlasma : public cFluidos {
+
+#define t_Plasma 365
+
+class cPlasma : public cFluidos{
+
 public:
-	cPlasma();
+	cPlasma(TipoS tipo, char rh);
 	~cPlasma();
+	bool tiempoMax(time_t extraccion);
 };
 

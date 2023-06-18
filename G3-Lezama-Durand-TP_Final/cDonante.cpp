@@ -1,7 +1,8 @@
 #include "cDonante.h"
 
-cDonante::cDonante(string nombre, string fecha, string tel, string dni, char sexo, unsigned int edad, unsigned int peso, bool enfermedad, bool tatuaje) :
-	cPaciente(nombre, fecha, tel, dni, sexo) {
+cDonante::cDonante(string nombre, string fecha, string tel, string dni, char sexo, unsigned int edad, unsigned int peso,
+	bool enfermedad, bool tatuaje, cFluidos* fluido):
+	cPaciente(nombre, fecha, tel, dni, sexo, fluido) {
 	this->edad = edad;
 	this->peso = peso;
 	this->enfermedad = enfermedad;
@@ -33,10 +34,26 @@ bool cDonante::get_tatuaje()
 	return this->tatuaje;
 }
 
+time_t cDonante::get_fextraccion()
+{
+	return this->fecha_extraccion;
+}
+
 string cDonante::to_string() {
 	stringstream ss;
 	ss << this->nombre <<" "<< this->fecha_nac<<" "<< this->DNI<<" " << this->sexo<<" " << this->edad;
 	return ss.str();
+}
+
+bool cDonante::operator==(cDonante* element)
+{
+	if (this->nombre == element->nombre && this->DNI == element->DNI)
+	{
+		return true;
+	}
+	else
+		return false;
+
 }
 
 ostream& operator<<(ostream& out, const cDonante& element) {

@@ -135,6 +135,7 @@
     <ClCompile Include="cPaciente.cpp" />
     <ClCompile Include="cPlasma.cpp" />
     <ClCompile Include="cReceptor.cpp" />
+    <ClCompile Include="cRegistro.cpp" />
     <ClCompile Include="cSangre.cpp" />
     <ClCompile Include="cVector.cpp" />
     <ClCompile Include="main.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="cPaciente.h" />
     <ClInclude Include="cPlasma.h" />
     <ClInclude Include="cReceptor.h" />
+    <ClInclude Include="cRegistro.h" />
     <ClInclude Include="cSangre.h" />
     <ClInclude Include="cVector.h" />
     <ClInclude Include="Header.h" />

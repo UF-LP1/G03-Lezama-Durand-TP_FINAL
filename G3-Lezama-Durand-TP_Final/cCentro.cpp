@@ -1,18 +1,9 @@
 #include "cCentro.h"
 
-bool cCentro::myfunction(cReceptor* r1, cReceptor* r2)
+
+
+cCentro::cCentro()
 {
-    if (r1->get_prioridad() > r2->get_prioridad())
-    {
-        return true;
-    }
-    else if (r1->get_estado() > r2->get_estado()){
-        return true;
-    }
-    else if (r1->get_fecha() > r2->get_fecha()) {
-        return true;
-    }
-    return false;
 }
 
 cCentro::cCentro(string nombre, string direccion, string partido, string provincia, string telefono)
@@ -28,49 +19,47 @@ cCentro::~cCentro()
 {
 }
 
-void cCentro::cargarArchivo()
-{
-    // faltan terminar 
-
-    fstream fp;
-    fp.open("Pacientes.cpp", ios::in);
-
-    if (!(fp.is_open()))
-        return;
-
-    string headers;
-    char coma = ',';
-    getline(fp, headers, '\n');
-
-    char estado;
-    string nombre, fecha_nac, telefono, DNI;
-    char sexo;
-
-    int i = 0;
-    while (fp)
-    {
-        fp >> estado >> coma >> nombre >> coma >> fecha_nac >> coma >> telefono >> coma >> DNI >> coma>>sexo>>coma;
-
-        if (estado == 'D')
-        {
-            unsigned int edad=0, peso=0;
-            bool enfermedad=true, tatuaje=true;
-
-            cDonante persona(nombre, fecha_nac, telefono, DNI, sexo, edad, peso, enfermedad, tatuaje);
-            agregarPaciente(&persona);
-        }
-        else if (estado == 'R') 
-        {
-            time_t f_listaEsp=0;
-            unsigned int prioridad=0;
-            string estado_="";
-            cReceptor persona(nombre, fecha_nac, telefono, DNI, sexo, estado_, f_listaEsp,prioridad);
-            agregarPaciente(&persona);
-        }
-        fp.close();
-    }
-
-}
+//void cCentro::cargarArchivo()
+//    // faltan terminar 
+//
+//    fstream fp;
+//    fp.open("Pacientes.cpp", ios::in);
+//
+//    if (!(fp.is_open()))
+//        return;
+//
+//    string headers;
+//    char coma = ',';
+//    getline(fp, headers, '\n');
+//
+//    char estado;
+//    string nombre, fecha_nac, telefono, DNI;
+//    char sexo;
+//
+//    int i = 0;
+//    while (fp)
+//    {
+//        fp >> estado >> coma >> nombre >> coma >> fecha_nac >> coma >> telefono >> coma >> DNI >> coma>>sexo>>coma;
+//
+//        if (estado == 'D')
+//        {
+//            unsigned int edad=0, peso=0;
+//            bool enfermedad=true, tatuaje=true;
+//
+//            cDonante persona(nombre, fecha_nac, telefono, DNI, sexo, edad, peso, enfermedad, tatuaje);
+//            agregarPaciente(&persona);
+//        }
+//        else if (estado == 'R') 
+//        {
+//            time_t f_listaEsp=0;
+//            unsigned int prioridad=0;
+//            string estado_="";
+//            cReceptor *persona(nombre, fecha_nac, telefono, DNI, sexo, estado_, f_listaEsp,prioridad);
+//            agregarPaciente(persona);
+//        }
+//        fp.close();
+//    }
+//
 
 void cCentro::agregarPaciente(cPaciente* paciente)
 {
@@ -79,6 +68,7 @@ void cCentro::agregarPaciente(cPaciente* paciente)
 
 cVector<cReceptor*> cCentro::get_lista_receptor()
 {
+    this->ordenar_prioridad();
     return this->lista_receptor;
 }
 
@@ -147,4 +137,47 @@ void cCentro::eliminar_donante(cDonante *paciente)
 void cCentro::ordenar_prioridad()
 {
     sort(this->lista_receptor.begin(), this->lista_receptor.end(), myfunction);
+}
+
+bool cCentro::operator==(cCentro element)
+{
+    if (this->provincia == element.provincia && this->partido == element.partido)
+        return true;
+    else
+        return false;
+}
+
+bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
+{
+    if (donante.get_fluido()->tiempoMax(donante.get_fextraccion()))
+    {
+        srand(time(NULL));
+        unsigned int exito = rand() % 2; //genero un numero del 0 al 1
+
+        if (exito == 1)
+        {
+            this->lista_pac - Persona;
+            this->lista_pac - Persona;
+            return true;
+        }
+        else
+        {
+            dynamic_cast<cReceptor*>(Persona)->set_estado(inestable);
+            dynamic_cast<cReceptor*>(Persona)->set_prioridad(1);
+            return false;
+        }
+    }
+    else
+        return false;
+
+}
+
+string cCentro::get_nombre()
+{
+    return this->nombre;
+}
+
+string cCentro::get_provincia()
+{
+    return  this->provincia;
 }
