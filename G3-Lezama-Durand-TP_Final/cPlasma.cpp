@@ -40,13 +40,13 @@ string cPlasma::to_string() {
 	return ss.str();
 }
 
-ostream& operator<<(ostream& out, cPlasma& element)
+ostream& operator<<(ostream& out, cPlasma& plasma)
 {
-	if (&element == nullptr)
+	if (&plasma == nullptr)
 	{
 		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.to_string();
+	out << plasma.to_string();
 	return out;
 }

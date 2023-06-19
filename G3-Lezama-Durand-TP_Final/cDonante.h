@@ -18,5 +18,6 @@ public:
 	time_t get_fextraccion();
 	string to_string();
 	friend ostream& operator<<(ostream& out, const cDonante& element);
-	bool operator==(cDonante *element);
 };
+
+ostream& operator<<(ostream& out, const cDonante& element);

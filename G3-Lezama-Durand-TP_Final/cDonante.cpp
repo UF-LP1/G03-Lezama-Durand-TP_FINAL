@@ -39,17 +39,6 @@ time_t cDonante::get_fextraccion()
 	return this->fecha_extraccion;
 }
 
-bool cDonante::operator==(cDonante* element)
-{
-	if (this->nombre == element->nombre && this->DNI == element->DNI)
-	{
-		return true;
-	}
-	else
-		return false;
-
-}
-
 ostream& operator<<(ostream& out, cDonante& element) {
 	if (&element == nullptr)
 	{

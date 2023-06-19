@@ -18,7 +18,8 @@ public:
 	tipoE get_estado();
 	void set_estado(tipoE estado);
 	void set_prioridad(unsigned int prioridad);
-	friend ostream& operator<<(ostream& out, cReceptor& element);
+	friend ostream& operator<<(ostream& out, cReceptor& r);
 	string to_string();
 };
 
+ostream& operator<<(ostream& out, cReceptor& r);

@@ -25,15 +25,6 @@ cFluidos* cPaciente::get_fluido()
 	return this->fluido;
 }
 
-bool cPaciente::operator==(cPaciente* element)
-{
-	if (this->nombre == element->nombre && this->DNI == element->DNI)
-	{
-		return true;
-	}
-	else
-		return false;
-}
 
 string cPaciente::get_nombre()
 {
@@ -43,4 +34,14 @@ string cPaciente::get_nombre()
 string cPaciente::get_DNI()
 {
 	return this->DNI;
+}
+
+bool cPaciente::operator==(cPaciente* P1)
+{
+	if (this->nombre == P1->nombre && this->DNI == P1->DNI)
+	{
+		return true;
+	}
+	else
+		return false;
 }

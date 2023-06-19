@@ -32,7 +32,6 @@ void cReceptor::set_estado(tipoE estado)
 {
 	this->estado = estado;
 	return;
-
 }
 
 void cReceptor::set_prioridad(unsigned int prioridad)
@@ -41,14 +40,14 @@ void cReceptor::set_prioridad(unsigned int prioridad)
 	return;
 }
 
-ostream& operator<<(ostream& out, cReceptor& element) {
+ostream& operator<<(ostream& out, cReceptor& r) {
 
-	if (&element == nullptr)
+	if (&r == nullptr)
 	{
 		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.to_string();
+	out << r.to_string();
 	return out;
 }
 

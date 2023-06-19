@@ -13,3 +13,4 @@ public:
 	friend ostream& operator<<(ostream& out, cSangre& element);
 };
 
+ostream& operator<<(ostream& out, cSangre& s);

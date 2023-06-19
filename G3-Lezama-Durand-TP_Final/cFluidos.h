@@ -17,5 +17,3 @@ public:
 	virtual string to_string()=0;
 };
 
-
-

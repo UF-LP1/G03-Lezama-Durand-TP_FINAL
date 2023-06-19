@@ -45,13 +45,13 @@ string cMedulaOsea::to_string() {
 	return ss.str();
 }
 
-ostream& operator<<(ostream& out, cMedulaOsea& element) {
+ostream& operator<<(ostream& out, cMedulaOsea& med) {
 
-	if (&element == nullptr)
+	if (&med == nullptr)
 	{
 		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.to_string();
+	out << med.to_string();
 	return out;
 }

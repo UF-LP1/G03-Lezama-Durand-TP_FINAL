@@ -1,7 +1,5 @@
 #include "cCentro.h"
 
-
-
 cCentro::cCentro()
 {
 }
@@ -18,7 +16,6 @@ cCentro::cCentro(string nombre, string direccion, string partido, string provinc
 cCentro::~cCentro()
 {
 }
-
 
 void cCentro::agregarPaciente(cPaciente* paciente)
 {
@@ -81,7 +78,7 @@ void cCentro::clasificar_paciente()
         if (dynamic_cast<cReceptor*>(this->lista_pac[i]) != nullptr)
         {
             cReceptor* aux = dynamic_cast<cReceptor*>(this->lista_pac[i]);
-            //Lista_receptores.push_back(aux_r);
+            
             if (aux != nullptr) {
                 this->lista_receptor + (aux);
             }
@@ -105,30 +102,23 @@ void cCentro::ordenar_prioridad()
     sort(this->lista_receptor.begin(), this->lista_receptor.end(), myfunction);
 }
 
-bool cCentro::operator==(cCentro element)
-{
-    if (this->provincia == element.provincia && this->partido == element.partido)
-        return true;
-    else
-        return false;
-}
 
 bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
 {
     if (donante.get_fluido()->tiempoMax(donante.get_fextraccion()))
     {
         srand(time(NULL));
-        unsigned int exito = rand() % 2; //genero un numero del 0 al 1
+        double exito = rand() % 2; //genero un numero del 0 al 1
 
         if (exito == 1)
         {
-            this->lista_pac-Persona;
+            //this->lista_pac-Persona;
 
             for (int i = 0;i < this->lista_receptor.size();i++)
             {
                 if (this->lista_receptor[i] == Persona)
                 {
-                    this->lista_receptor.;
+                    this->lista_receptor;
                 }
             }
             return true;
@@ -187,3 +177,25 @@ ostream& operator<<(ostream& out, cCentro& element) {
     return out;
 }
 
+bool operator==(cCentro c1, cCentro c2)
+{
+    if (c1.provincia == c2.provincia && c1.partido == c2.partido)
+        return true;
+    else
+        return false;
+}
+
+bool myfunction(cReceptor* r1, cReceptor* r2)
+{
+    if (r1->get_prioridad() > r2->get_prioridad())
+    {
+        return true;
+    }
+    else if (r1->get_estado() > r2->get_estado()) {
+        return true;
+    }
+    else if (r1->get_fecha() > r2->get_fecha()) {
+        return true;
+    }
+    return false;
+}

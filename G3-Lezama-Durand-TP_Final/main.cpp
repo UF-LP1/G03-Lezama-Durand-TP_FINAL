@@ -12,8 +12,8 @@ int main()
 		cPlasma Plasma_B(B, '-');
 		cPlasma Plasma_AB(AB, '+');
 		cMedulaOsea Med_AB(AB, '+', "HLA - A");
-		cMedulaOsea Med_A(A, '-', "HLA - A");
-		cMedulaOsea Med_B(B, '-', "HLA - A");
+		cMedulaOsea Med_A(A, '+', "HLA - A");
+		cMedulaOsea Med_B(B, '+', "HLA - A");
 
 	//creamos centros
 		cCentro centro_favaloro("Favaloro", "Belgano 2023", "CABA", "Capital Federal", "1126564789");
@@ -102,7 +102,7 @@ int main()
 		centro_SanMiguel.agregarPaciente(&Harry);
 		centro_CruzRoja.agregarPaciente(&Sofia);
 
-		cPaciente* persona;
+		cPaciente* persona=nullptr;
 		int pos = 0;
 
 		for (int i = 0;BSA.get_listacentro().size();i++)
@@ -115,7 +115,7 @@ int main()
 
 			if (persona == nullptr)
 			{
-				cout << "no se encontro donardor";
+				//cout << "no se encontro donardor";
 			}
 			else
 			{
@@ -123,5 +123,5 @@ int main()
 			}
 		}
 
-
+	return 0;
 }

@@ -40,13 +40,13 @@ string cSangre::to_string() {
 	return ss.str();
 }
 
-ostream& operator<<(ostream& out, cSangre& element)
+ostream& operator<<(ostream& out, cSangre& s)
 {
-	if (&element == nullptr)
+	if (&s == nullptr)
 	{
 		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.to_string();
+	out << s.to_string();
 	return out;
 }

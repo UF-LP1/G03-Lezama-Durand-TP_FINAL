@@ -10,6 +10,7 @@ public:
 	~cPlasma();
 	bool tiempoMax(time_t extraccion);
 	string to_string();
-	friend ostream& operator<<(ostream& out, cPlasma& element);
+	friend ostream& operator<<(ostream& out, cPlasma& plasma);
 };
 
+ostream& operator<<(ostream& out, cPlasma& plasma);

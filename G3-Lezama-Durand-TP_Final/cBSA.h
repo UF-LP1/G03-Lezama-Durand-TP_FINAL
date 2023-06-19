@@ -1,22 +1,14 @@
 #pragma once
-#include "cVector.h"
-#include "cDonante.h"
-#include "cReceptor.h"
 #include "cCentro.h"
-#include "cSangre.h"
-#include "cPlasma.h"
-#include "cMedulaOsea.h"
 #include "cRegistro.h"
-
-bool myfunction(cReceptor& r1, cReceptor& r2);
 
 class cBSA{
 	cVector<cCentro> lista_centro;
-	cVector<cRegistro> lista_registros;
-	cVector<cReceptor> posibles_receptores(cDonante* donante);
-	cVector<cReceptor> lista_sangre(cDonante* donante);
-	cVector<cReceptor> lista_plasma(cDonante* donante);
-	cVector<cReceptor> lista_medula(cDonante* donante);
+	cVector<cRegistro*> lista_registros;
+	cVector<cReceptor*> posibles_receptores(cDonante* donante);
+	cVector<cReceptor*> lista_sangre(cDonante* donante);
+	cVector<cReceptor*> lista_plasma(cDonante* donante);
+	cVector<cReceptor*> lista_medula(cDonante* donante);
 	cCentro ubicarDonante(cDonante);
 public:
 	cBSA();
@@ -30,12 +22,4 @@ public:
 	friend ostream& operator<<(ostream& out, cBSA& element);
 };
 
-ostream& operator<<(ostream& out, cBSA& element) {
-	
-	for (int i = 0;i < element.lista_centro.size();i++)
-	{
-		out << element.lista_centro[i];
-	}
-
-	return out;
-}
+ostream& operator<<(ostream& out, cBSA& element);

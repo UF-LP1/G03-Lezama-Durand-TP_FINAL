@@ -1,49 +1,6 @@
 ﻿  cBSA.cpp
   cCentro.cpp
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(121,19): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1528,1): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1527): message : Vea la referencia a la creación de una instancia de la función plantilla "bool std::_Debug_lt_pred<bool(__cdecl *&)(cReceptor &,cReceptor &),cReceptor*&,cReceptor*&,0>(_Pr,_Ty1,_Ty2) noexcept(<expr>)" que se está compilando
-          with
-          [
-              _Pr=bool (__cdecl *&)(cReceptor &,cReceptor &),
-              _Ty1=cReceptor *&,
-              _Ty2=cReceptor *&
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7274): message : Vea la referencia a la creación de una instancia de la función plantilla "_BidIt **std::_Insertion_sort_unchecked<_RanIt,bool(__cdecl *)(cReceptor &,cReceptor &)>(const _BidIt,const _BidIt,_Pr)" que se está compilando
-          with
-          [
-              _BidIt=cReceptor **,
-              _RanIt=cReceptor **,
-              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7304): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Sort_unchecked<cReceptor**,bool(__cdecl *)(cReceptor &,cReceptor &)>(_RanIt,_RanIt,__int64,_Pr)" que se está compilando
-          with
-          [
-              _RanIt=cReceptor **,
-              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
-          ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(106): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::sort<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,bool(__cdecl *)(cReceptor &,cReceptor &)>(const _RanIt,const _RanIt,_Pr)" que se está compilando
-          with
-          [
-              _Ty=cReceptor *,
-              _RanIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<cReceptor *>>>,
-              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1528,1): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7212,32): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7274): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<_RanIt,_RanIt> std::_Partition_by_median_guess_unchecked<_RanIt,bool(__cdecl *)(cReceptor &,cReceptor &)>(_RanIt,_RanIt,_Pr)" que se está compilando
-          with
-          [
-              _RanIt=cReceptor **,
-              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7212,22): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7216,92): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7216,82): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7227,40): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7227,30): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7240,40): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7240,30): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Users\USUARIO\Desktop\facutald\2do año\Nueva carpeta (6)\G3-Lezama-Durand-TP_Final\cCentro.cpp(110,19): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   cDonante.cpp
   cFluidos.cpp
   cMedulaOsea.cpp
@@ -55,3 +12,4 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.3162
   cVector.cpp
   main.cpp
   Generando código...
+  G3-Lezama-Durand-TP_Final.vcxproj -> C:\Users\USUARIO\Desktop\facutald\2do año\Nueva carpeta (6)\x64\Debug\G3-Lezama-Durand-TP_Final.exe

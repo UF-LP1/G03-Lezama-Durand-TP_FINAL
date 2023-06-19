@@ -13,9 +13,9 @@ void cBSA::agregar_centro(cCentro centro)
 	this->lista_centro + (centro);
 }
 
-cVector<cReceptor> cBSA::posibles_receptores(cDonante* donante)
+cVector<cReceptor*> cBSA::posibles_receptores(cDonante* donante)
 {
-	cVector<cReceptor> lista;
+	cVector<cReceptor*> lista;
 
 	cFluidos* aux = dynamic_cast<cSangre*>(donante->get_fluido());
 	if (aux != nullptr)
@@ -38,7 +38,7 @@ cVector<cReceptor> cBSA::posibles_receptores(cDonante* donante)
 
 cPaciente* cBSA::match(cDonante* donante)
 {
-	cVector<cReceptor> lista=posibles_receptores(donante);
+	cVector<cReceptor*> lista=posibles_receptores(donante);
 	cCentro centro_donante=this->ubicarDonante(*donante);
 	cCentro centro_receptor;
 
@@ -52,11 +52,11 @@ cPaciente* cBSA::match(cDonante* donante)
 	{
 		for(i = 0;i < lista.size();i++)
 		{
-			centro_receptor =this->protocolo(lista[i]);
+			centro_receptor =this->protocolo(*lista[i]);
 
 			if (centro_donante == centro_receptor && cont==0)
 			{
-				persona = &lista[i];
+				persona = lista[i];
 				cont++;
 			}
 		}
@@ -111,7 +111,7 @@ void cBSA::Crear_Registro(cReceptor rp, cDonante rd, cCentro centro)
 
 	cRegistro registro(centro_, fecha_t, donante, receptor, fluido, datos_fluidos, provincia);
 
-	this->lista_registros + registro;
+	this->lista_registros.push_back(&registro);
 }
 
 void cBSA::buscar_receptor(string DNI)
@@ -135,54 +135,54 @@ cVector<cCentro> cBSA::get_listacentro()
 	return this->lista_centro;
 }
 
-cVector<cReceptor> cBSA::lista_sangre(cDonante* donante){
+cVector<cReceptor*> cBSA::lista_sangre(cDonante* donante){
 
-	cVector<cReceptor> lista;
+	cVector<cReceptor*> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
 			cFluidos* aux = dynamic_cast<cSangre*>(this->lista_centro[i].lista_receptor[k]->get_fluido());
-			if(aux!=nullptr  && lista[i].get_fluido() == donante->get_fluido())
+			if(aux!=nullptr  && lista[i]->get_fluido() == donante->get_fluido())
 			{
-				lista + (*lista_centro[i].lista_receptor[k]);
+				lista + (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
 	return lista;
 }
 
-cVector<cReceptor> cBSA::lista_plasma(cDonante* donante)
+cVector<cReceptor*> cBSA::lista_plasma(cDonante* donante)
 {
-	cVector<cReceptor> lista;
+	cVector<cReceptor*> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
 			cFluidos* aux = dynamic_cast<cPlasma*>(lista_centro[i].lista_receptor[k]->get_fluido());
-			if (aux != nullptr && lista[i].get_fluido() == donante->get_fluido())
+			if (aux != nullptr && lista[i]->get_fluido() == donante->get_fluido())
 			{
-				lista + (*lista_centro[i].lista_receptor[k]);
+				lista + (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
 	return lista;
 }
 
-cVector<cReceptor> cBSA::lista_medula(cDonante* donante)
+cVector<cReceptor*> cBSA::lista_medula(cDonante* donante)
 {
-	cVector<cReceptor> lista;
+	cVector<cReceptor*> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
 			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].lista_receptor[k]->get_fluido());
-			if (aux != nullptr)
+			if (aux != nullptr && lista[i]->get_fluido() == donante->get_fluido())
 			{
-				lista + (*lista_centro[i].lista_receptor[k]);
+				lista + (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
@@ -205,3 +205,14 @@ cCentro cBSA::ubicarDonante(cDonante donante)
 	}
 	return centro;
 }
+
+ostream& operator<<(ostream& out, cBSA& element) {
+
+	for (int i = 0;i < element.lista_centro.size();i++)
+	{
+		out << element.lista_centro[i];
+	}
+
+	return out;
+}
+

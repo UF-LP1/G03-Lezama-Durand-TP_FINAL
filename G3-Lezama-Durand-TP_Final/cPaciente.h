@@ -15,7 +15,7 @@ public:
 	~cPaciente();
 	virtual string to_string() = 0;
 	cFluidos* get_fluido();
-	bool operator==(cPaciente* element);
+	bool operator==(cPaciente* P1);
 	string get_nombre();
 	string get_DNI();
 };
