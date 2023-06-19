@@ -99,3 +99,4 @@ bool cFluidos::operator==(cFluidos* element)
 
 	return compatible;
 }
+

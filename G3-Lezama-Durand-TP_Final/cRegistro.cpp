@@ -13,3 +13,12 @@ cRegistro::cRegistro(string centro, time_t fecha_t, string donante, string recep
 cRegistro::~cRegistro()
 {
 }
+
+string cRegistro::to_string() {
+	stringstream ss;
+	char comma = ',';
+	ss << "Centro: " << this->centro << comma << "Provincia: " << this->provincia << "Fecha de transfucion: " 
+		<< this->fecha_t << comma << "Donante: " << this->donante << comma << "Receptor: " << this->receptor 
+		<< comma << "Fluido: " << this->fluido << endl;
+	return ss.str();
+}

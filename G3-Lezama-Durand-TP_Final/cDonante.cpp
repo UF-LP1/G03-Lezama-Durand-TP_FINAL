@@ -39,12 +39,6 @@ time_t cDonante::get_fextraccion()
 	return this->fecha_extraccion;
 }
 
-string cDonante::to_string() {
-	stringstream ss;
-	ss << this->nombre <<" "<< this->fecha_nac<<" "<< this->DNI<<" " << this->sexo<<" " << this->edad;
-	return ss.str();
-}
-
 bool cDonante::operator==(cDonante* element)
 {
 	if (this->nombre == element->nombre && this->DNI == element->DNI)
@@ -56,12 +50,38 @@ bool cDonante::operator==(cDonante* element)
 
 }
 
-ostream& operator<<(ostream& out, const cDonante& element) {
+ostream& operator<<(ostream& out, cDonante& element) {
 	if (&element == nullptr)
 	{
-		//tirar excepcion 
+		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.nombre << " " << element.fecha_nac << " " << element.DNI << " " << element.sexo << " " << element.edad << endl;
+	out << element.to_string();
 	return out;
+}
+
+string cDonante::to_string() {
+	stringstream ss;
+	char comma = ',';
+	ss << "Nombre: " << this->nombre << comma << "DNI: " << this->DNI << comma << "Edad:"
+		<< this->edad << comma << "Sexo: " << this->sexo << comma << "Peso: " << this->peso
+		<< comma << "Contacto: " << this->telefono << comma;
+
+	string fluido = " ";
+
+	if (dynamic_cast<cSangre*>(this->fluido) != nullptr)
+	{
+		fluido = "Sangre";
+	}
+	else if (dynamic_cast<cPlasma*>(this->fluido) != nullptr)
+	{
+		fluido = "Plasma";
+	}
+	else if (dynamic_cast<cMedulaOsea*>(this->fluido) != nullptr)
+	{
+		fluido = "Medula Osea";
+	}
+
+	ss << "Dona: " << fluido << endl;
+	return ss.str();
 }

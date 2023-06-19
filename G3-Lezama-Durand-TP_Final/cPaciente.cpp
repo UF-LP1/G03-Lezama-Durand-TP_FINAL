@@ -1,5 +1,13 @@
 #include "cPaciente.h"
 
+cPaciente::cPaciente()
+{
+	this->nombre=" ";
+	this->fecha_nac = " ";
+	this->telefono = ""; 
+	this->DNI=" ";
+}
+
 cPaciente::cPaciente(string nombre, string fecha, string tel, string dni, char sexo, cFluidos* fluido): fluido(fluido)
 {
 	this->nombre = nombre;

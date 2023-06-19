@@ -1,44 +1,49 @@
 ﻿  cBSA.cpp
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(33,21): error C2355: 'this': solo se puede hacer referencia a this en funciones miembro no estáticas o inicializadores de miembro de datos no estáticos
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cBSA.cpp(125): message : Vea la referencia a la creación de una instancia de la función plantilla "std::ostream &operator <<<_Ty>(std::ostream &,const T &)" que se está compilando
+  cCentro.cpp
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(121,19): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1528,1): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1527): message : Vea la referencia a la creación de una instancia de la función plantilla "bool std::_Debug_lt_pred<bool(__cdecl *&)(cReceptor &,cReceptor &),cReceptor*&,cReceptor*&,0>(_Pr,_Ty1,_Ty2) noexcept(<expr>)" que se está compilando
+          with
+          [
+              _Pr=bool (__cdecl *&)(cReceptor &,cReceptor &),
+              _Ty1=cReceptor *&,
+              _Ty2=cReceptor *&
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7274): message : Vea la referencia a la creación de una instancia de la función plantilla "_BidIt **std::_Insertion_sort_unchecked<_RanIt,bool(__cdecl *)(cReceptor &,cReceptor &)>(const _BidIt,const _BidIt,_Pr)" que se está compilando
+          with
+          [
+              _BidIt=cReceptor **,
+              _RanIt=cReceptor **,
+              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7304): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Sort_unchecked<cReceptor**,bool(__cdecl *)(cReceptor &,cReceptor &)>(_RanIt,_RanIt,__int64,_Pr)" que se está compilando
+          with
+          [
+              _RanIt=cReceptor **,
+              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
+          ]
+C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(106): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::sort<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,bool(__cdecl *)(cReceptor &,cReceptor &)>(const _RanIt,const _RanIt,_Pr)" que se está compilando
           with
           [
               _Ty=cReceptor *,
-              T=cReceptor *
+              _RanIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<cReceptor *>>>,
+              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
           ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(35,9): error C2062: tipo '_Ty' inesperado
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xutility(1528,1): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7212,32): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7274): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<_RanIt,_RanIt> std::_Partition_by_median_guess_unchecked<_RanIt,bool(__cdecl *)(cReceptor &,cReceptor &)>(_RanIt,_RanIt,_Pr)" que se está compilando
           with
           [
-              _Ty=cReceptor *
+              _RanIt=cReceptor **,
+              _Pr=bool (__cdecl *)(cReceptor &,cReceptor &)
           ]
-  cCentro.cpp
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(154,19): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,8): error C2039: "remove": no es un miembro de "cVector<cPaciente *>"
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.h(15): message : vea la declaración de 'cVector<cPaciente *>'
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(20): message : al compilar la función del miembro clase plantilla "void cVector<cPaciente *>::operator -(T &)"
-          with
-          [
-              T=cPaciente *
-          ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(159): message : Vea la referencia a la creación de una instancia de la función plantilla "void cVector<cPaciente *>::operator -(T &)" que se está compilando
-          with
-          [
-              T=cPaciente *
-          ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.h(15): message : Vea la referencia a la creación de una instancia de clase plantilla "cVector<cPaciente *>" que se está compilando
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(21,8): error C2039: "remove": no es un miembro de "cVector<cDonante *>"
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.h(16): message : vea la declaración de 'cVector<cDonante *>'
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cVector.h(20): message : al compilar la función del miembro clase plantilla "void cVector<cDonante *>::operator -(T &)"
-          with
-          [
-              T=cDonante *
-          ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.cpp(134): message : Vea la referencia a la creación de una instancia de la función plantilla "void cVector<cDonante *>::operator -(T &)" que se está compilando
-          with
-          [
-              T=cDonante *
-          ]
-C:\Users\USUARIO\Desktop\facutald\2do año\Labo de program I\TP_Final\G3-Lezama-Durand-TP_Final\G3-Lezama-Durand-TP_Final\cCentro.h(16): message : Vea la referencia a la creación de una instancia de clase plantilla "cVector<cDonante *>" que se está compilando
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7212,22): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7216,92): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7216,82): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7227,40): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7227,30): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7240,40): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 2 no puede convertirse de 'cReceptor *' a 'cReceptor &'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\algorithm(7240,30): error C2664: 'bool (cReceptor &,cReceptor &)': el argumento 1 no puede convertirse de 'cReceptor *' a 'cReceptor &'
   cDonante.cpp
   cFluidos.cpp
   cMedulaOsea.cpp

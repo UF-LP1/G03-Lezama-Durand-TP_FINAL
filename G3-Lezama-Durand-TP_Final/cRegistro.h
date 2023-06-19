@@ -14,5 +14,6 @@ class cRegistro
 public:
 	cRegistro(string centro, time_t fecha_t, string donante, string receptor, string fluido, cFluidos* datos_fluidos, string provincnia);
 	~cRegistro();
+	string to_string();
 };
 

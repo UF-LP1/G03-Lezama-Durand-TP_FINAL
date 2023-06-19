@@ -41,13 +41,41 @@ void cReceptor::set_prioridad(unsigned int prioridad)
 	return;
 }
 
-ostream& operator<<(ostream& out, const cReceptor& element) {
+ostream& operator<<(ostream& out, cReceptor& element) {
+
 	if (&element == nullptr)
 	{
-		//tirar excepcion 
+		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element.nombre << " " << element.fecha_nac << " " << element.DNI
-		<< " " << element.sexo << " " << element.estado << " " << element.prioridad << endl;
+	out << element.to_string();
 	return out;
 }
+
+string cReceptor::to_string() {
+	stringstream ss;
+	char comma = ',';
+	ss << "Nombre: " << this->nombre << comma << "DNI: " << this->DNI << comma << "Sexo: " << this->sexo
+		<< comma << "Recibe: ";
+
+	string fluido = " ";
+
+	if (dynamic_cast<cSangre*>(this->fluido) != nullptr)
+	{
+		fluido = "Sangre";
+	}
+	else if (dynamic_cast<cPlasma*>(this->fluido) != nullptr)
+	{
+		fluido = "Plasma";
+	}
+	else if (dynamic_cast<cMedulaOsea*>(this->fluido) != nullptr)
+	{
+		fluido = "Medula Osea";
+	}
+
+	ss<< fluido << comma << "Prioridad: " << this->prioridad << comma << 
+		"Estado: " << this->estado << "Fecha de entrada a la lista de espera: " << this->f_listaEsp <<
+		comma << "Contacto: " << this->telefono << endl;
+	return ss.str();
+}
+

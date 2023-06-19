@@ -2,13 +2,10 @@
 #include "Header.h" 
 #include "cFluidos.h"
  template <typename T>
-
 class cVector: public vector<T>{
 public:
 	void operator+(T& element);
-	void operator-(T& element);
-	void operator==(T& element);
-	friend ostream& operator<<(ostream& out, const T& element);
+    void operator - (T* element);
 };
 
 template <typename T>
@@ -16,23 +13,4 @@ inline void cVector <T>:: operator+(T& element) {
 	this->push_back(element);
 }
 
-template <class T>
-inline void cVector<T>:: operator-(T& element) {
-	this->remove(element);
-}
 
-template <class T>
-inline void cVector<T>:: operator==(T& element) {
-
-}
-
-template <class T>
-
-ostream& operator<<(ostream& out, const T& element)
-{
-	for (int i = 0;i < this->size();i++)
-	{
-		out <<T<<endl;
-	}
-	return out;
-}

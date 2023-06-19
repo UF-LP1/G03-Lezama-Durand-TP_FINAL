@@ -26,5 +26,16 @@ public:
 	cCentro protocolo(cReceptor receptor);
 	void Crear_Registro(cReceptor rp, cDonante rd, cCentro centro);
 	void buscar_receptor(string DNI);
+	cVector<cCentro> get_listacentro();
+	friend ostream& operator<<(ostream& out, cBSA& element);
 };
 
+ostream& operator<<(ostream& out, cBSA& element) {
+	
+	for (int i = 0;i < element.lista_centro.size();i++)
+	{
+		out << element.lista_centro[i];
+	}
+
+	return out;
+}

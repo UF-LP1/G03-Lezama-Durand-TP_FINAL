@@ -19,47 +19,6 @@ cCentro::~cCentro()
 {
 }
 
-//void cCentro::cargarArchivo()
-//    // faltan terminar 
-//
-//    fstream fp;
-//    fp.open("Pacientes.cpp", ios::in);
-//
-//    if (!(fp.is_open()))
-//        return;
-//
-//    string headers;
-//    char coma = ',';
-//    getline(fp, headers, '\n');
-//
-//    char estado;
-//    string nombre, fecha_nac, telefono, DNI;
-//    char sexo;
-//
-//    int i = 0;
-//    while (fp)
-//    {
-//        fp >> estado >> coma >> nombre >> coma >> fecha_nac >> coma >> telefono >> coma >> DNI >> coma>>sexo>>coma;
-//
-//        if (estado == 'D')
-//        {
-//            unsigned int edad=0, peso=0;
-//            bool enfermedad=true, tatuaje=true;
-//
-//            cDonante persona(nombre, fecha_nac, telefono, DNI, sexo, edad, peso, enfermedad, tatuaje);
-//            agregarPaciente(&persona);
-//        }
-//        else if (estado == 'R') 
-//        {
-//            time_t f_listaEsp=0;
-//            unsigned int prioridad=0;
-//            string estado_="";
-//            cReceptor *persona(nombre, fecha_nac, telefono, DNI, sexo, estado_, f_listaEsp,prioridad);
-//            agregarPaciente(persona);
-//        }
-//        fp.close();
-//    }
-//
 
 void cCentro::agregarPaciente(cPaciente* paciente)
 {
@@ -75,6 +34,18 @@ cVector<cReceptor*> cCentro::get_lista_receptor()
 cVector<cDonante*> cCentro::get_lista_donante()
 {
     return this->lista_donante;
+}
+
+void cCentro::eliminar_donante(cDonante* donante)
+{
+    for (int i = 0;i < this->lista_donante.size();i++)
+    {
+        if (this->lista_donante[i] == donante)
+        {
+           this->lista_donante.erase(lista_donante.begin() + i);
+        }
+    }
+    return;
 }
 
 cVector<cPaciente*> cCentro::get_lista()
@@ -129,11 +100,6 @@ void cCentro::clasificar_paciente()
     this->ordenar_prioridad();
 }
 
-void cCentro::eliminar_donante(cDonante *paciente)
-{
-    this->lista_donante - (paciente);
-}
-
 void cCentro::ordenar_prioridad()
 {
     sort(this->lista_receptor.begin(), this->lista_receptor.end(), myfunction);
@@ -156,8 +122,15 @@ bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
 
         if (exito == 1)
         {
-            this->lista_pac - Persona;
-            this->lista_pac - Persona;
+            this->lista_pac-Persona;
+
+            for (int i = 0;i < this->lista_receptor.size();i++)
+            {
+                if (this->lista_receptor[i] == Persona)
+                {
+                    this->lista_receptor.;
+                }
+            }
             return true;
         }
         else
@@ -181,3 +154,36 @@ string cCentro::get_provincia()
 {
     return  this->provincia;
 }
+
+string cCentro::to_string(){
+
+    stringstream ss;
+    char comma = ',';
+    ss<<"Nombre: "<< this->nombre << comma << "Direccion: " << this->direccion << comma 
+        << "Partido: " << this->partido << comma << "Provincia: " << this->provincia << comma 
+        << "Telefono: " << this->telefono << endl;
+    return ss.str();
+}
+
+void cCentro::listar_receptor()
+{
+    for (int i = 0;i < this->lista_receptor.size();i++)
+    {
+        cout << this->lista_receptor[i];
+    }
+}
+
+void cCentro::listar_donante()
+{
+    
+    for (int i = 0;i < this->lista_donante.size();i++)
+    {
+        cout << this->lista_donante[i];
+    }
+}
+
+ostream& operator<<(ostream& out, cCentro& element) {
+    out << element.to_string();
+    return out;
+}
+

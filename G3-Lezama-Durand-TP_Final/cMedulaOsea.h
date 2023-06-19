@@ -11,5 +11,7 @@ public:
 	~cMedulaOsea();
 	bool tiempoMax(time_t extraccion);
 	string get_HLA();
+	string to_string();
+	friend ostream& operator<<(ostream& out, cMedulaOsea& element);
 };
 

@@ -14,6 +14,7 @@ public:
 	TipoS get_tipo();
 	virtual bool tiempoMax(time_t extraccion) = 0;
 	bool operator==(cFluidos* element);//para verificar compatibilidad
+	virtual string to_string()=0;
 };
 
 

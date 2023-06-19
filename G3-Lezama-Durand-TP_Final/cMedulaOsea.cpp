@@ -32,3 +32,26 @@ bool cMedulaOsea::tiempoMax(time_t extraccion)
 	delete fechaActual;
 	return en_tiempo;
 }
+
+string cMedulaOsea::get_HLA()
+{
+	return this->HLA;
+}
+
+string cMedulaOsea::to_string() {
+	stringstream ss;
+	char comma = ',';
+	ss << "Tipo de sangre: " << this->tipo << comma << "Rh: " << this->RH << "HLA: 	" << this->HLA << endl;
+	return ss.str();
+}
+
+ostream& operator<<(ostream& out, cMedulaOsea& element) {
+
+	if (&element == nullptr)
+	{
+		throw new exception{ "no se encontro paciente" };
+	}
+
+	out << element.to_string();
+	return out;
+}

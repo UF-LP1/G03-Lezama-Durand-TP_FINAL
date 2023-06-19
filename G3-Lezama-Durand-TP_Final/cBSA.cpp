@@ -46,7 +46,7 @@ cPaciente* cBSA::match(cDonante* donante)
 
 	int i, pos = 0, cont=0;
 
-	cPaciente* persona;
+	cPaciente* persona=0;
 
 	if (!(lista.empty()))
 	{
@@ -128,6 +128,11 @@ void cBSA::buscar_receptor(string DNI)
 	}
 
 	return;
+}
+
+cVector<cCentro> cBSA::get_listacentro()
+{
+	return this->lista_centro;
 }
 
 cVector<cReceptor> cBSA::lista_sangre(cDonante* donante){

@@ -9,5 +9,7 @@ public:
 	cPlasma(TipoS tipo, char rh);
 	~cPlasma();
 	bool tiempoMax(time_t extraccion);
+	string to_string();
+	friend ostream& operator<<(ostream& out, cPlasma& element);
 };
 
