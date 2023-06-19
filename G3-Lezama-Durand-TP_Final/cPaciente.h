@@ -18,4 +18,10 @@ public:
 	bool operator==(cPaciente* P1);
 	string get_nombre();
 	string get_DNI();
+	void set_nombre(string s);
+	void set_fecha_nac(string s);
+	void set_telefono(string s);
+	void set_dni(string s);
+	void set_sexo(char s);
+	void set_fluido(cFluidos* s);
 };

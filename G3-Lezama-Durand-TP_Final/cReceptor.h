@@ -11,6 +11,7 @@ private:
 
 public:
 	cReceptor(string nombre, string fecha, string tel, string dni, char sexo, tipoE estado, time_t f_listaEsp, unsigned int prioridad, cFluidos* fluido);
+	cReceptor();
 	~cReceptor();
 	void hola() {}
 	unsigned int get_prioridad();
@@ -18,8 +19,11 @@ public:
 	tipoE get_estado();
 	void set_estado(tipoE estado);
 	void set_prioridad(unsigned int prioridad);
+	void set_fechaLE(time_t s);
 	friend ostream& operator<<(ostream& out, cReceptor& r);
+	friend istream& operator>>(istream& in, cReceptor& r);
 	string to_string();
 };
 
 ostream& operator<<(ostream& out, cReceptor& r);
+istream& operator>>(istream& in, cReceptor& r);

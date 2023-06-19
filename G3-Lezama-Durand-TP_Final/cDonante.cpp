@@ -7,6 +7,16 @@ cDonante::cDonante(string nombre, string fecha, string tel, string dni, char sex
 	this->peso = peso;
 	this->enfermedad = enfermedad;
 	this->tatuaje = tatuaje;
+	this->fecha_extraccion = 0;
+}
+
+cDonante::cDonante()
+{
+	this->edad =0;
+	this->peso = 0;
+	this->enfermedad = false;
+	this->tatuaje = false;
+	this->fecha_extraccion = 0;
 }
 
 cDonante::~cDonante()
@@ -49,6 +59,73 @@ ostream& operator<<(ostream& out, cDonante& element) {
 	return out;
 }
 
+istream& operator>>(istream& in, cDonante& d)
+{
+		string s=" ";
+		char c=' ';
+		unsigned int p=0;
+		int e=0;
+		int tipo_sangre=0;
+		char rh=' ';
+		bool b=false;
+
+		cout << "Ingrese el nombre del donante" << endl;
+		in >> s;
+		d.set_nombre(s);
+		cout << "Ingrese la fecha de nacimiento del donante" << endl;
+		in >> s;
+		d.set_fecha_nac(s);
+		cout << "Ingrese el telefono del donante" << endl;
+		in >> s;
+		d.set_telefono(s);
+		cout << "Ingrese el DNI del donante" << endl;
+		in >> s;
+		d.set_dni(s);
+		cout << "Ingrese el sexo del donante" << endl;
+		in >> c;
+		d.set_sexo(c);
+		cout << "Ingrese la edad del donante" << endl;
+		in >> p;
+		d.set_edad(p);
+		cout << "Ingrese el peso del donante" << endl;
+		in >> p;
+		d.set_peso(p);
+		cout << "Ingrese si el donante tiene una enfermedad: true para VERDADERO,false para FALSO" << endl;
+		in >> b;
+		d.set_enfermedad(b);
+		cout << "Ingrese si el donante se realizo un tatuaje en los ultimos dos meses: true para VERDADERO,false para FALSO" << endl;
+		in >> b;
+		d.set_tatuaje(b);
+
+		cout << "ingrese que fluido necesita recibir: sangre/Medula Osea/Plasma " << endl;
+		in >> s;
+
+		if (s == "sangre")
+		{
+			cout << "ingrese su tipo de sangre y rh: " << endl;
+			in >> tipo_sangre >> rh;
+
+			cSangre sangre(TipoS(tipo_sangre), rh);
+			d.set_fluido(&sangre);
+		}
+		else if (s == "Plasma")
+		{
+			cout << "ingrese su tipo de sangre y rh: " << endl;
+			in >> tipo_sangre >> rh;
+
+			cPlasma Plasma(TipoS(tipo_sangre), rh);
+			d.set_fluido(&Plasma);
+		}
+		else
+		{
+			cout << "ingrese su tipo de sangre y rh: " << endl;
+			cMedulaOsea Med(TipoS(tipo_sangre), rh, "HLA-A");
+			d.set_fluido(&Med);
+		}
+
+		return in;
+}
+
 string cDonante::to_string() {
 	stringstream ss;
 	char comma = ',';
@@ -73,4 +150,28 @@ string cDonante::to_string() {
 
 	ss << "Dona: " << fluido << endl;
 	return ss.str();
+}
+
+void cDonante::set_edad(unsigned int s)
+{
+	this->edad = s;
+	return;
+}
+
+void cDonante::set_peso(unsigned int s)
+{
+	this->peso = s;
+	return;
+}
+
+void cDonante::set_enfermedad(bool s)
+{
+	this->enfermedad = s;
+	return;
+}
+
+void cDonante::set_tatuaje(bool s)
+{
+	this->tatuaje = s;
+	return;
 }

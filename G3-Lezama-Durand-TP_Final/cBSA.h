@@ -9,7 +9,7 @@ class cBSA{
 	cVector<cReceptor*> lista_sangre(cDonante* donante);
 	cVector<cReceptor*> lista_plasma(cDonante* donante);
 	cVector<cReceptor*> lista_medula(cDonante* donante);
-	cCentro ubicarDonante(cDonante);
+	cCentro ubicarDonante(cDonante d);
 public:
 	cBSA();
 	~cBSA();

@@ -36,6 +36,42 @@ string cPaciente::get_DNI()
 	return this->DNI;
 }
 
+void cPaciente::set_nombre(string s)
+{
+	this->nombre = s;
+	return;
+}
+
+void cPaciente::set_fecha_nac(string s)
+{
+	this->fecha_nac = s;
+	return;
+}
+
+void cPaciente::set_telefono(string s)
+{
+	this->telefono = s;
+	return;
+}
+
+void cPaciente::set_dni(string s)
+{
+	this->DNI = s;
+	return;
+}
+
+void cPaciente::set_sexo(char s)
+{
+	this->sexo = s;
+	return;
+}
+
+void cPaciente::set_fluido(cFluidos* s)
+{
+	this->fluido = s;
+	return;
+}
+
 bool cPaciente::operator==(cPaciente* P1)
 {
 	if (this->nombre == P1->nombre && this->DNI == P1->DNI)

@@ -1,5 +1,6 @@
 #include "cBSA.h"
 
+int menu();
 int main()
 {
 	cBSA BSA;
@@ -104,24 +105,96 @@ int main()
 
 		cPaciente* persona=nullptr;
 		int pos = 0;
+		bool bandera = true;
 
-		for (int i = 0;BSA.get_listacentro().size();i++)
-		{
-			for (int k = 0;k < BSA.get_listacentro()[i].get_lista_donante().size();k++)
+		do {
+			int opcion = menu();
+			string DNI;
+			cCentro centro;
+			cDonante donante;
+			cReceptor receptor;
+
+			switch (opcion)
 			{
-				persona=BSA.match(BSA.get_listacentro()[i].get_lista_donante()[k]);
-				pos = k;
+			case 1:
+				cin >> centro;
+				break;
+			case 2:
+				cin >> donante;
+			case 3:
+				cin >> receptor;
+			case 4:
+				cout << BSA;//usamos la sobrecarga de ostream
+			case 5:
+				for (int i = 0;i < BSA.get_listacentro().size(); i++)
+				{
+					BSA.get_listacentro()[i].listar_donante();
+
+				}break;
+
+			case 6:
+				for (int i = 0;i < BSA.get_listacentro().size(); i++)
+				{
+					BSA.get_listacentro()[i].listar_receptor();
+				}
+				break;
+			case 7:
+				cout << "Ingrese el DNI que quiere buscar" << endl;
+				cin >> DNI;
+				BSA.buscar_receptor(DNI);
+				break;
+			case 8:
+				for (int i = 0;BSA.get_listacentro().size();i++)
+				{
+					for (int k = 0;k < BSA.get_listacentro()[i].get_lista_donante().size();k++)
+					{
+						persona = BSA.match(BSA.get_listacentro()[i].get_lista_donante()[k]);
+						pos = k;
+					}
+
+					if (persona == nullptr)
+					{
+						cout << "no se encontro donardor";
+					}
+					else
+					{
+						BSA.get_listacentro()[i].realizar_transfusion(persona, *BSA.get_listacentro()[i].get_lista_donante()[pos]);
+					}
+				}
+			case 9:
+				BSA.Informar_Cant_provincia();
+			default:
+				break;
 			}
 
-			if (persona == nullptr)
-			{
-				cout << "no se encontro donardor";
-			}
+			string s;
+			cout << "desea seguir en el Menu? si/no";
+			cin >> s;
+
+			if (s == "si")
+				bandera = true;
 			else
-			{
-				BSA.get_listacentro()[i].realizar_transfusion(persona, *BSA.get_listacentro()[i].get_lista_donante()[pos]);
-			}
-		}
+				bandera = false;
+
+		}while (bandera);
 
 	return 0;
+}
+
+ int menu() {
+	cout << "BIENVANIDO AL BANCO DE SANGRE DE ARGENTINA" << endl << endl;
+	cout << "Eleija una de las siguientes opciones" << endl;
+	cout << "1)Agregar Centro" << endl;
+	cout << "2)Agregar Donante" << endl;
+	cout << "3)Agregar Receptor" << endl;
+	cout << "4)Imprimir lista de Centros" << endl;
+	cout << "5)Imprimir lista de Donantes" << endl;
+	cout << "6)Imprimir lista de Receptores" << endl;
+	cout << "7)Buscar Receptor por DNI" << endl;
+	cout << "8)Buscar match para los Donantes" << endl;
+	cout << "9)Imprimir lista de donaciones por provincia por mes " << endl;
+
+	unsigned int opcion;
+	cin >> opcion;
+	return opcion;
 }

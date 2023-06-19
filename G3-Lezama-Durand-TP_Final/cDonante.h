@@ -9,15 +9,21 @@ private:
 public:
 	cDonante(string nombre, string fecha, string tel, string dni, char sexo, unsigned int edad, 
 		unsigned int peso, bool enfermedad,bool tatuaje, cFluidos* fluido);
+	cDonante();
 	~cDonante();
-	void hola() {}
 	unsigned int get_edad();
 	unsigned int get_peso();
 	bool get_enfermedad();
 	bool get_tatuaje();
 	time_t get_fextraccion();
 	string to_string();
+	void set_edad(unsigned int s);
+	void set_peso(unsigned int s);
+	void set_enfermedad(bool s);
+	void set_tatuaje(bool s);
 	friend ostream& operator<<(ostream& out, const cDonante& element);
+	friend istream& operator>>(istream& in, cDonante& element);
 };
 
 ostream& operator<<(ostream& out, const cDonante& element);
+istream& operator>>(istream& in, cDonante& element);

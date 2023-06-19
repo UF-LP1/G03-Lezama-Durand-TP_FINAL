@@ -34,8 +34,16 @@ public:
 	void listar_receptor();
 	void listar_donante();
 	friend ostream& operator<<(ostream& out, cCentro& element);
+	friend istream& operator>>(istream& in, cCentro& element);
+	void set_nombre(string s);
+	void set_direccion(string s);
+	void set_partido(string s);
+	void set_provincia(string s);
+	void set_telefono(string s );
 };
 
-ostream& operator<<(ostream& out, cCentro& element); 
+ostream& operator<<(ostream& out, cCentro& element);
+
+istream& operator>>(istream& in, cCentro& element);
 
 bool operator==(cCentro c1,cCentro c2);

@@ -172,9 +172,66 @@ void cCentro::listar_donante()
     }
 }
 
-ostream& operator<<(ostream& out, cCentro& element) {
+void cCentro::set_nombre(string s)
+{
+    this->nombre = s;
+    return;
+}
+
+void cCentro::set_direccion(string s)
+{
+    this->direccion = s;
+    return;
+}
+
+void cCentro::set_partido(string s)
+{
+    this->partido = s;
+    return;
+}
+
+void cCentro::set_provincia(string s)
+{
+    this->provincia = s;
+    return;
+}
+
+void cCentro::set_telefono(string s)
+{
+    this->telefono = s;
+    return;
+}
+
+ostream& operator<<(ostream& out, cCentro& element)
+{
     out << element.to_string();
     return out;
+}
+
+istream& operator>>(istream& in, cCentro& element)
+{
+    string s=" ";
+    cout << "ingrese el nombre del centro" << endl;
+    in >> s;
+    element.set_nombre(s);
+
+    cout << "ingrese la direccion del centro" << endl;
+    in >> s;
+    element.set_direccion(s);
+
+    cout << "ingrese el partido del centro" << endl;
+    in >> s;
+    element.set_partido(s);
+
+    cout << "ingrese el provincia del centro" << endl;
+    in >> s;
+    element.set_provincia(s);
+
+    cout << "ingrese el telefono del centro" << endl;
+    in >> s;
+    element.set_telefono(s);
+
+    return in;
 }
 
 bool operator==(cCentro c1, cCentro c2)
