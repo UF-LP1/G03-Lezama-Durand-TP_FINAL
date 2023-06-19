@@ -20,6 +20,8 @@ public:
 	void buscar_receptor(string DNI);
 	cVector<cCentro> get_listacentro();
 	friend ostream& operator<<(ostream& out, cBSA& element);
+	void Buscar_receptor_imprimir(string DNI);
+	void Informar_Cant_provincia();
 };
 
 ostream& operator<<(ostream& out, cBSA& element);

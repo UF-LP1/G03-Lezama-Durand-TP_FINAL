@@ -22,3 +22,13 @@ string cRegistro::to_string() {
 		<< comma << "Fluido: " << this->fluido << endl;
 	return ss.str();
 }
+
+string cRegistro::get_provincia()
+{
+	return this->provincia;
+}
+
+time_t cRegistro::get_fecha()
+{
+	return this->fecha_t;
+}

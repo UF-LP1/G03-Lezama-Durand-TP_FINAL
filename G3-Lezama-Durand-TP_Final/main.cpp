@@ -115,7 +115,7 @@ int main()
 
 			if (persona == nullptr)
 			{
-				//cout << "no se encontro donardor";
+				cout << "no se encontro donardor";
 			}
 			else
 			{

@@ -216,3 +216,155 @@ ostream& operator<<(ostream& out, cBSA& element) {
 	return out;
 }
 
+void cBSA::Buscar_receptor_imprimir(string DNI) {
+	int i;
+	for (i = 0; i < this->lista_centro.size();i++)
+	{
+		for (int k = 0; k < this->lista_centro[i].get_lista_receptor().size();k++)
+		{
+			if (lista_centro[i].get_lista_receptor()[k]->get_DNI() == DNI)
+				cout << lista_centro[i].get_lista_receptor()[k]->to_string();
+		}
+	}
+	if (i == this->lista_centro.size())
+	{
+		throw new exception("no se encontro el receptor");
+	}
+	return;
+}
+
+void cBSA::Informar_Cant_provincia()
+{
+	unsigned int contCABA=0, contBA=0, contMend=0,contSanLuis=0, contSantaFe=0, contSanJuan=0, contSantiago=0, contNeuquen=0, contLaPampa=0, 
+		contLaRioja=0,contCatamarca=0, contRioNegro=0, contChubut=0, contTierraDelFuego=0, contCordoba=0, contEntreRios=0, contCorrientes=0,
+		contMisiones=0, contTucuman=0, contJujuy=0, contSalta=0, contFormosa=0, contSantCruz=0, contChaco=0;
+
+	time_t now = time(NULL);//obtengo la fecha actual en segundos
+	tm* ahora = new tm;
+	localtime_s(ahora, &now);//convierto now a tm y lo guardo en ahora
+
+	tm* fechaAux = new tm;
+	time_t donancion;
+	string provincia;
+
+	if (ahora->tm_isdst == 28)//mi final de mes va a ser 28 porque todos los meses tienen 28 dias
+	{
+		for (int i = 0;i < lista_registros.size();i++)
+		{
+			donancion = lista_registros[i]->get_fecha();
+			localtime_s(fechaAux, &donancion);
+			
+			if (fechaAux->tm_mday == ahora->tm_mday)
+			{
+				if (lista_registros[i]->get_provincia() == "CABA")
+				{
+					contCABA++;
+				}
+				else if (lista_registros[i]->get_provincia() == "Buenos Aires")
+				{
+					contBA++;
+				}else if (lista_registros[i]->get_provincia() == "Santa Fe")
+				{
+					contSantaFe++;
+				}
+				else if (lista_registros[i]->get_provincia() == "Cordoba")
+				{
+					contCordoba++;
+				}else if (lista_registros[i]->get_provincia() == "San Luis")
+				{
+					contSanLuis++;
+
+				}else if (lista_registros[i]->get_provincia() == "La Pampa")
+				{
+					contLaPampa++;
+				}else if (lista_registros[i]->get_provincia() == "Misiones")
+				{
+					contMisiones++;
+				}
+				else if (lista_registros[i]->get_provincia() == "Corrientes")
+				{
+					contCorrientes++;
+				}
+				else if (lista_registros[i]->get_provincia() == "Entre Rios")
+				{
+					contEntreRios++;
+
+				}else if (lista_registros[i]->get_provincia() == "Jujuy")
+				{
+					contJujuy++;
+				}else if (lista_registros[i]->get_provincia() == "Salta")
+				{
+					contSalta++;
+				}else if (lista_registros[i]->get_provincia() == "Tucuman")
+				{
+					contTucuman++;
+				}
+				else if (lista_registros[i]->get_provincia() == "Santiago del Estero")
+				{
+					contSantiago++;
+				}else if (lista_registros[i]->get_provincia() == "Catamarca")
+				{
+					contCatamarca++;
+				}else if (lista_registros[i]->get_provincia() == "La Rioja")
+				{
+					contLaRioja++;
+				}else if (lista_registros[i]->get_provincia() == "Chaco")
+				{
+					contChaco++;
+				}else if (lista_registros[i]->get_provincia() == "Formosa")
+				{
+					contFormosa++;
+				}else if (lista_registros[i]->get_provincia() == "San Juan")
+				{
+					contSanJuan++;
+				}else if (lista_registros[i]->get_provincia() == "Mendoza")
+				{
+					contMend++;
+				}else if (lista_registros[i]->get_provincia() == "Chubut")
+				{
+					contChubut++;
+				}else if (lista_registros[i]->get_provincia() == "Neuquen")
+				{
+					contNeuquen++;
+				}else if (lista_registros[i]->get_provincia() == "San Cruz")
+				{
+					contSantCruz++;
+				}else if (lista_registros[i]->get_provincia() == "Tierra del Fuego")
+				{
+					contTierraDelFuego++;
+				}else if (lista_registros[i]->get_provincia() == "Rio Negro")
+				{
+					contRioNegro++;
+				}
+			}
+		}
+	}
+
+	cout << "Donantes en: " << endl;
+	cout << "Jujuy: " << contJujuy << endl;
+	cout << "Salta: " << contSalta << endl;
+	cout << "Formosa: " << contFormosa << endl;
+	cout << "Tucuman: " << contTucuman << endl;
+	cout << "Misiones: " << contMisiones << endl;
+	cout << "San Luis: " << contSanLuis << endl;
+	cout << "San Juan: " << contSanJuan << endl;
+	cout << "Mendoza: " << contMend << endl;
+	cout << "Cordoba: " << contCordoba << endl;
+	cout << "Corrientes: " << contCorrientes << endl;
+	cout << "Entre Rios: " << contEntreRios << endl;
+	cout << "Bs As: " << contBA << endl;
+	cout << "CABA: " << contCABA << endl;
+	cout << "Neuquen: " << contNeuquen << endl;
+	cout << "La Pampa: " << contLaPampa << endl;
+	cout << "Santa Cruz: " << contSantCruz << endl;
+	cout << "Chubut: " << contChubut << endl;
+	cout << "Tierra del Fuego: " << contTierraDelFuego << endl;
+	cout << "La Rioja: " << contLaRioja << endl;
+	cout << "Chaco: " << contChaco << endl;
+	cout << "Santa Fe: " << contSantaFe << endl;
+	cout << "Catamarca: " << contCatamarca << endl;
+	cout << "Rio Negro: " << contRioNegro << endl;
+	cout << "Santiago del Estero: " << contSantiago << endl << endl;
+	
+	return;
+}
