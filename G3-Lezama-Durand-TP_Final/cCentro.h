@@ -6,6 +6,11 @@
 
 bool myfunction(cReceptor r1, cReceptor r2);
 
+template <typename T>
+inline void operator+(vector<T>lista, T persona);
+
+inline void operator-(vector<cPaciente*>lista, cPaciente* persona);
+
 class cCentro {
 private:
 	string nombre, direccion, partido, provincia, telefono;
@@ -43,6 +48,7 @@ public:
 	void agregarReceptor(cReceptor paciente);
 	void imprimir();
 };
+
 
 ostream& operator<<(ostream& out, cCentro& element);
 

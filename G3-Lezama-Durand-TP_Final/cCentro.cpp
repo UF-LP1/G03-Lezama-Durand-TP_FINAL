@@ -21,15 +21,16 @@ cCentro::~cCentro()
 
 void cCentro::agregarDonante(cDonante paciente)
 {
+ 
     this->lista_pac.push_back(&paciente);
-    this->lista_donante.push_back(paciente);
-
+    this->lista_donante + paciente;
 }
 
 void cCentro::agregarReceptor(cReceptor paciente)
 {
     this->lista_pac.push_back(&paciente);
-    this->lista_receptor.push_back(paciente);
+
+    this->lista_receptor+(paciente);
 }
 void cCentro::imprimir()
 {
@@ -39,6 +40,7 @@ void cCentro::imprimir()
     }
     return;
 }
+
 vector<cReceptor> cCentro::get_lista_receptor()
 {
     this->ordenar_prioridad();
@@ -52,13 +54,15 @@ vector<cDonante> cCentro::get_lista_donante()
 
 void cCentro::eliminar_donante(cDonante* donante)
 {
-    for (int i = 0;i < this->lista_donante.size();i++)
+    for (int i = 0;i < this->get_lista_donante().size();i++)
     {
-        if (this->lista_donante[i] == donante)
+        if (this->get_lista_donante()[i] == donante)
         {
-           this->lista_donante.erase(lista_donante.begin() + i);
+            this->get_lista_donante().erase(this->get_lista_donante().begin() + i);
         }
     }
+    return;
+   
     return;
 }
 
@@ -128,7 +132,7 @@ bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
 
         if (exito == 1)
         {
-            //this->lista_pac-Persona;
+            this->lista_pac-Persona;
 
             for (int i = 0;i < this->lista_receptor.size();i++)
             {
@@ -272,4 +276,24 @@ bool myfunction(cReceptor r1, cReceptor r2)
         return true;
     }
     return false;
+}
+
+template <typename T>
+inline void operator+(vector<T>lista, T persona)
+{
+    lista.push_back(persona);
+    return;
+}
+
+
+void operator-(vector<cPaciente*>lista, cPaciente* persona)
+{
+    for (int i = 0;i <lista.size();i++)
+    {
+        if (lista[i] == persona)
+        {
+            lista.erase(lista.begin() + i);
+        }
+    }
+    return;
 }

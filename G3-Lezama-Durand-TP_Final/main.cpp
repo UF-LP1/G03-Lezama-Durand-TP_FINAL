@@ -107,8 +107,6 @@ int main()
 		int pos = 0;
 		bool bandera = true;
 
-		centro_favaloro.imprimir();
-
 		do {
 			int opcion = menu();
 			string DNI;
@@ -134,20 +132,39 @@ int main()
 			case 5:
 				for (int i = 0;i < BSA.get_listacentro().size(); i++)
 				{
-					BSA.get_listacentro()[i].listar_donante();
+					try
+					{
+						BSA.get_listacentro()[i].listar_donante();
+					}
+					catch (exception& e) {
+						cerr << e.what();
+					}
 
 				}break;
 
 			case 6:
 				for (int i = 0;i < BSA.get_listacentro().size(); i++)
 				{
-					BSA.get_listacentro()[i].listar_receptor();
+					try
+					{
+						BSA.get_listacentro()[i].listar_receptor();
+					}
+					catch (exception& e) {
+						cerr << e.what();
+					}
 				}
 				break;
 			case 7:
 				cout << "Ingrese el DNI que quiere buscar" << endl;
 				cin >> DNI;
-				BSA.buscar_receptor(DNI);
+
+				try
+				{
+					BSA.buscar_receptor(DNI);
+				}
+				catch (exception& e) {
+					cerr << e.what();
+				}
 				break;
 			case 8:
 				for (int i = 0;BSA.get_listacentro().size();i++)
