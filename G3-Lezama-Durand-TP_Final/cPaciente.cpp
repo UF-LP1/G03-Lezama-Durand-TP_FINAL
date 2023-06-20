@@ -81,3 +81,13 @@ bool cPaciente::operator==(cPaciente* P1)
 	else
 		return false;
 }
+
+ostream& operator<<(ostream& out, cPaciente* element) {
+	if (element == nullptr)
+	{
+		throw new exception{ "no se encontro paciente" };
+	}
+
+	out << element->get_nombre();
+	return out;
+}

@@ -11,24 +11,41 @@ cCentro::cCentro(string nombre, string direccion, string partido, string provinc
     this->partido = partido;
     this->provincia = provincia;
     this->telefono = telefono;
+    vector<cPaciente*> lista_pac;
+    vector<cDonante*> lista_donante;
+    vector<cReceptor*> lista_receptor;
 }
-
 cCentro::~cCentro()
 {
 }
 
-void cCentro::agregarPaciente(cPaciente* paciente)
+void cCentro::agregarDonante(cDonante paciente)
 {
-    lista_pac+(paciente); 
+    this->lista_pac.push_back(&paciente);
+    this->lista_donante.push_back(paciente);
+
 }
 
-cVector<cReceptor*> cCentro::get_lista_receptor()
+void cCentro::agregarReceptor(cReceptor paciente)
+{
+    this->lista_pac.push_back(&paciente);
+    this->lista_receptor.push_back(paciente);
+}
+void cCentro::imprimir()
+{
+    for (int i = 0;i < this->lista_pac.size();i++)
+    {
+        cout<< &this->lista_pac[i] << endl;
+    }
+    return;
+}
+vector<cReceptor> cCentro::get_lista_receptor()
 {
     this->ordenar_prioridad();
     return this->lista_receptor;
 }
 
-cVector<cDonante*> cCentro::get_lista_donante()
+vector<cDonante> cCentro::get_lista_donante()
 {
     return this->lista_donante;
 }
@@ -45,7 +62,7 @@ void cCentro::eliminar_donante(cDonante* donante)
     return;
 }
 
-cVector<cPaciente*> cCentro::get_lista()
+vector<cPaciente*> cCentro::get_lista()
 {
     return this->lista_pac;
 }
@@ -54,19 +71,19 @@ void cCentro::condiciones_donante()
 {
     for (int i = 0;i < lista_donante.size();i++)
     {
-        if ((lista_donante[i])->get_edad() <= 18 && lista_donante[i]->get_edad() >= 65)
+        if ((lista_donante[i]).get_edad() <= 18 && lista_donante[i].get_edad() >= 65)
         {
-            eliminar_donante(lista_donante[i]);
+            eliminar_donante(&lista_donante[i]);
         }
-        else if (lista_donante[i]->get_peso() <= 50)
+        else if (lista_donante[i].get_peso() <= 50)
         {
-            eliminar_donante(lista_donante[i]);
+            eliminar_donante(&lista_donante[i]);
         }
-        else if (lista_donante[i]->get_tatuaje() != false) {
-            eliminar_donante(lista_donante[i]);
+        else if (lista_donante[i].get_tatuaje() != false) {
+            eliminar_donante(&lista_donante[i]);
         }
-        else if (lista_donante[i]->get_enfermedad() != false) {
-            eliminar_donante(lista_donante[i]);
+        else if (lista_donante[i].get_enfermedad() != false) {
+            eliminar_donante(&lista_donante[i]);
         }
     }
 }
@@ -80,7 +97,7 @@ void cCentro::clasificar_paciente()
             cReceptor* aux = dynamic_cast<cReceptor*>(this->lista_pac[i]);
             
             if (aux != nullptr) {
-                this->lista_receptor + (aux);
+                this->lista_receptor.push_back(*aux);
             }
         }
         else if (dynamic_cast<cDonante*>(this->lista_pac[i]) != nullptr)
@@ -88,7 +105,7 @@ void cCentro::clasificar_paciente()
             cDonante* aux = dynamic_cast<cDonante*>(this->lista_pac[i]);
             if (aux != nullptr)
             {
-                this->lista_donante + (aux);
+                this->lista_donante .push_back (*aux);
             }
             return;
         }
@@ -101,7 +118,6 @@ void cCentro::ordenar_prioridad()
 {
     sort(this->lista_receptor.begin(), this->lista_receptor.end(), myfunction);
 }
-
 
 bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
 {
@@ -157,18 +173,19 @@ string cCentro::to_string(){
 
 void cCentro::listar_receptor()
 {
-    for (int i = 0;i < this->lista_receptor.size();i++)
+    for (int i = 0;i < this->get_lista_receptor().size();i++)
     {
-        cout << this->lista_receptor[i];
+        cout << &this->lista_receptor[i];
     }
 }
 
 void cCentro::listar_donante()
 {
-    
-    for (int i = 0;i < this->lista_donante.size();i++)
+    cout << "en el centro: " << get_nombre()<<endl;
+
+    for (int i = 0;i < this->get_lista_donante().size();i++)
     {
-        cout << this->lista_donante[i];
+        cout << &this->get_lista_donante()[i]<<endl;
     }
 }
 
@@ -242,16 +259,16 @@ bool operator==(cCentro c1, cCentro c2)
         return false;
 }
 
-bool myfunction(cReceptor* r1, cReceptor* r2)
+bool myfunction(cReceptor r1, cReceptor r2)
 {
-    if (r1->get_prioridad() > r2->get_prioridad())
+    if (r1.get_prioridad() > r2.get_prioridad())
     {
         return true;
     }
-    else if (r1->get_estado() > r2->get_estado()) {
+    else if (r1.get_estado() > r2.get_estado()) {
         return true;
     }
-    else if (r1->get_fecha() > r2->get_fecha()) {
+    else if (r1.get_fecha() > r2.get_fecha()) {
         return true;
     }
     return false;

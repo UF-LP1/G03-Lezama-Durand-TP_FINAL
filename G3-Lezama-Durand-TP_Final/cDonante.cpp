@@ -49,15 +49,6 @@ time_t cDonante::get_fextraccion()
 	return this->fecha_extraccion;
 }
 
-ostream& operator<<(ostream& out, cDonante& element) {
-	if (&element == nullptr)
-	{
-		throw new exception{ "no se encontro paciente" };
-	}
-
-	out << element.to_string();
-	return out;
-}
 
 istream& operator>>(istream& in, cDonante& d)
 {

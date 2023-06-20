@@ -53,16 +53,6 @@ void cReceptor::set_fechaLE(time_t s)
 	return;
 }
 
-ostream& operator<<(ostream& out, cReceptor& r) {
-
-	if (&r == nullptr)
-	{
-		throw new exception{ "no se encontro paciente" };
-	}
-
-	out << r.to_string();
-	return out;
-}
 
 istream& operator>>(istream& in, cReceptor& r)
 {

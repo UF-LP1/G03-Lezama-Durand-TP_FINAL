@@ -61,15 +61,15 @@ int main()
 		cReceptor Sofia("Sofia", "25/06/2014", "112886789", "45366228", 'F', inestable, 546844, 1, &Med_A);
 
 	//agregamos los donantes a la lista de centros
-		centro_favaloro.agregarPaciente(&Emilia);
-		centro_Adrogue.agregarPaciente(&Maria);
-		centro_Salud.agregarPaciente(&Camila);
-		centro_SanMartin.agregarPaciente(&isabella);
-		centro_Corazon.agregarPaciente(&Saul);
-		centro_CruzRoja.agregarPaciente(&lorenzo);
-		centro_Saavedra.agregarPaciente(&renata);
-		centro_LaVida.agregarPaciente(&juan);
-		centro_Sanacion.agregarPaciente(&gustavo);
+		centro_favaloro.agregarDonante(Emilia);
+		centro_Adrogue.agregarDonante(Maria);
+		centro_Salud.agregarDonante(Camila);
+		centro_SanMartin.agregarDonante(isabella);
+		centro_Corazon.agregarDonante(Saul);
+		centro_CruzRoja.agregarDonante(lorenzo);
+		centro_Saavedra.agregarDonante(renata);
+		centro_LaVida.agregarDonante(juan);
+		centro_Sanacion.agregarDonante(gustavo);
 
 	//agregamos centros a la lista de BSA
 		BSA.agregar_centro(centro_favaloro);
@@ -84,28 +84,30 @@ int main()
 		BSA.agregar_centro(centro_SanMiguel);
 
 	//agregamos receptores a la lista de centros
-		centro_favaloro.agregarPaciente(&valentina);
-		centro_SanMartin.agregarPaciente(&flor);
-		centro_Corazon.agregarPaciente(&saumuel);
-		centro_Adrogue.agregarPaciente(&Daniel);
-		centro_SanMiguel.agregarPaciente(&Romelia);
-		centro_CruzRoja.agregarPaciente(&Juana);
-		centro_Salud.agregarPaciente(&Gabriel);
-		centro_Saavedra.agregarPaciente(&Olivia);
-		centro_LaVida.agregarPaciente(&Selena);
-		centro_Sanacion.agregarPaciente(&Franco);
-		centro_favaloro.agregarPaciente(&Julieta);
-		centro_SanMartin.agregarPaciente(&Javier);
-		centro_Corazon.agregarPaciente(&Tobias);
-		centro_Adrogue.agregarPaciente(&Josefina);
-		centro_SanMartin.agregarPaciente(&Julian);
-		centro_Salud.agregarPaciente(&Enzo);
-		centro_SanMiguel.agregarPaciente(&Harry);
-		centro_CruzRoja.agregarPaciente(&Sofia);
+		centro_favaloro.agregarReceptor(valentina);
+		centro_SanMartin.agregarReceptor(flor);
+		centro_Corazon.agregarReceptor(saumuel);
+		centro_Adrogue.agregarReceptor(Daniel);
+		centro_SanMiguel.agregarReceptor(Romelia);
+		centro_CruzRoja.agregarReceptor(Juana);
+		centro_Salud.agregarReceptor(Gabriel);
+		centro_Saavedra.agregarReceptor(Olivia);
+		centro_LaVida.agregarReceptor(Selena);
+		centro_Sanacion.agregarReceptor(Franco);
+		centro_favaloro.agregarReceptor(Julieta);
+		centro_SanMartin.agregarReceptor(Javier);
+		centro_Corazon.agregarReceptor(Tobias);
+		centro_Adrogue.agregarReceptor(Josefina);
+		centro_SanMartin.agregarReceptor(Julian);
+		centro_Salud.agregarReceptor(Enzo);
+		centro_SanMiguel.agregarReceptor(Harry);
+		centro_CruzRoja.agregarReceptor(Sofia);
 
 		cPaciente* persona=nullptr;
 		int pos = 0;
 		bool bandera = true;
+
+		centro_favaloro.imprimir();
 
 		do {
 			int opcion = menu();
@@ -118,13 +120,17 @@ int main()
 			{
 			case 1:
 				cin >> centro;
+				BSA.agregar_centro(centro);
 				break;
 			case 2:
 				cin >> donante;
+				break;
 			case 3:
 				cin >> receptor;
+				break;
 			case 4:
 				cout << BSA;//usamos la sobrecarga de ostream
+				break;
 			case 5:
 				for (int i = 0;i < BSA.get_listacentro().size(); i++)
 				{
@@ -148,7 +154,7 @@ int main()
 				{
 					for (int k = 0;k < BSA.get_listacentro()[i].get_lista_donante().size();k++)
 					{
-						persona = BSA.match(BSA.get_listacentro()[i].get_lista_donante()[k]);
+						persona = BSA.match(&BSA.get_listacentro()[i].get_lista_donante()[k]);
 						pos = k;
 					}
 
@@ -158,7 +164,7 @@ int main()
 					}
 					else
 					{
-						BSA.get_listacentro()[i].realizar_transfusion(persona, *BSA.get_listacentro()[i].get_lista_donante()[pos]);
+						BSA.get_listacentro()[i].realizar_transfusion(persona, BSA.get_listacentro()[i].get_lista_donante()[pos]);
 					}
 				}
 			case 9:
@@ -168,7 +174,7 @@ int main()
 			}
 
 			string s;
-			cout << "desea seguir en el Menu? si/no";
+			cout << "¿Desea seguir en el Menu? si/no"<<endl;
 			cin >> s;
 
 			if (s == "si")

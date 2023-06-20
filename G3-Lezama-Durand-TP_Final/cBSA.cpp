@@ -10,12 +10,12 @@ cBSA::~cBSA()
 
 void cBSA::agregar_centro(cCentro centro)
 {
-	this->lista_centro + (centro);
+	this->lista_centro.push_back(centro);
 }
 
-cVector<cReceptor*> cBSA::posibles_receptores(cDonante* donante)
+vector<cReceptor> cBSA::posibles_receptores(cDonante* donante)
 {
-	cVector<cReceptor*> lista;
+	vector<cReceptor> lista;
 
 	cFluidos* aux = dynamic_cast<cSangre*>(donante->get_fluido());
 	if (aux != nullptr)
@@ -38,7 +38,7 @@ cVector<cReceptor*> cBSA::posibles_receptores(cDonante* donante)
 
 cPaciente* cBSA::match(cDonante* donante)
 {
-	cVector<cReceptor*> lista=posibles_receptores(donante);
+	vector<cReceptor> lista=posibles_receptores(donante);
 	cCentro centro_donante=this->ubicarDonante(*donante);
 	cCentro centro_receptor;
 
@@ -52,11 +52,11 @@ cPaciente* cBSA::match(cDonante* donante)
 	{
 		for(i = 0;i < lista.size();i++)
 		{
-			centro_receptor =this->protocolo(*lista[i]);
+			centro_receptor =this->protocolo(lista[i]);
 
 			if (centro_donante == centro_receptor && cont==0)
 			{
-				persona = lista[i];
+				persona = &lista[i];
 				cont++;
 			}
 		}
@@ -75,7 +75,7 @@ cCentro cBSA::protocolo(cReceptor receptor)
 	{
 		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			if (receptor == lista_centro[i].get_lista_donante()[k])
+			if (receptor == &lista_centro[i].get_lista_donante()[k])
 			{
 				centro = lista_centro[i];
 			}
@@ -111,7 +111,7 @@ void cBSA::Crear_Registro(cReceptor rp, cDonante rd, cCentro centro)
 
 	cRegistro registro(centro_, fecha_t, donante, receptor, fluido, datos_fluidos, provincia);
 
-	this->lista_registros.push_back(&registro);
+	this->lista_registros.push_back(registro);
 }
 
 void cBSA::buscar_receptor(string DNI)
@@ -120,9 +120,9 @@ void cBSA::buscar_receptor(string DNI)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
-			if(lista_centro[i].lista_receptor[k]->get_DNI()==DNI)
+			if(this->lista_centro[i].lista_receptor[k].get_DNI()==DNI)
 			{
-				cout << lista_centro[i].lista_receptor[k];
+				cout << &lista_centro[i].lista_receptor[k];
 			}
 		}
 	}
@@ -130,59 +130,59 @@ void cBSA::buscar_receptor(string DNI)
 	return;
 }
 
-cVector<cCentro> cBSA::get_listacentro()
+vector<cCentro> cBSA::get_listacentro()
 {
 	return this->lista_centro;
 }
 
-cVector<cReceptor*> cBSA::lista_sangre(cDonante* donante){
+vector<cReceptor> cBSA::lista_sangre(cDonante* donante){
 
-	cVector<cReceptor*> lista;
+	vector<cReceptor> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cSangre*>(this->lista_centro[i].lista_receptor[k]->get_fluido());
-			if(aux!=nullptr  && lista[i]->get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cSangre*>(this->lista_centro[i].lista_receptor[k].get_fluido());
+			if(aux!=nullptr  && lista[i].get_fluido() == donante->get_fluido())
 			{
-				lista + (lista_centro[i].lista_receptor[k]);
+				lista.push_back (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
 	return lista;
 }
 
-cVector<cReceptor*> cBSA::lista_plasma(cDonante* donante)
+vector<cReceptor> cBSA::lista_plasma(cDonante* donante)
 {
-	cVector<cReceptor*> lista;
+	vector<cReceptor> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cPlasma*>(lista_centro[i].lista_receptor[k]->get_fluido());
-			if (aux != nullptr && lista[i]->get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cPlasma*>(lista_centro[i].lista_receptor[k].get_fluido());
+			if (aux != nullptr && lista[i].get_fluido() == donante->get_fluido())
 			{
-				lista + (lista_centro[i].lista_receptor[k]);
+				lista .push_back (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
 	return lista;
 }
 
-cVector<cReceptor*> cBSA::lista_medula(cDonante* donante)
+vector<cReceptor> cBSA::lista_medula(cDonante* donante)
 {
-	cVector<cReceptor*> lista;
+	vector<cReceptor> lista;
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
 		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].lista_receptor[k]->get_fluido());
-			if (aux != nullptr && lista[i]->get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].lista_receptor[k].get_fluido());
+			if (aux != nullptr && lista[i].get_fluido() == donante->get_fluido())
 			{
-				lista + (lista_centro[i].lista_receptor[k]);
+				lista.push_back (lista_centro[i].lista_receptor[k]);
 			}
 		}
 	}
@@ -197,7 +197,7 @@ cCentro cBSA::ubicarDonante(cDonante donante)
 	{
 		for (int k = 0;k < this->lista_centro[i].get_lista_donante().size();k++)
 		{
-			if (donante==lista_centro[i].get_lista_donante()[k])//sobrecarga de == con nombre DNI y Nombre
+			if (donante==&lista_centro[i].get_lista_donante()[k])//sobrecarga de == con nombre DNI y Nombre
 			{
 				centro = lista_centro[i];
 			}
@@ -222,8 +222,8 @@ void cBSA::Buscar_receptor_imprimir(string DNI) {
 	{
 		for (int k = 0; k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			if (lista_centro[i].get_lista_receptor()[k]->get_DNI() == DNI)
-				cout << lista_centro[i].get_lista_receptor()[k]->to_string();
+			if (lista_centro[i].get_lista_receptor()[k].get_DNI() == DNI)
+				cout << lista_centro[i].get_lista_receptor()[k].to_string();
 		}
 	}
 	if (i == this->lista_centro.size())
@@ -251,88 +251,88 @@ void cBSA::Informar_Cant_provincia()
 	{
 		for (int i = 0;i < lista_registros.size();i++)
 		{
-			donancion = lista_registros[i]->get_fecha();
+			donancion = lista_registros[i].get_fecha();
 			localtime_s(fechaAux, &donancion);
 			
 			if (fechaAux->tm_mday == ahora->tm_mday)
 			{
-				if (lista_registros[i]->get_provincia() == "CABA")
+				if (lista_registros[i].get_provincia() == "CABA")
 				{
 					contCABA++;
 				}
-				else if (lista_registros[i]->get_provincia() == "Buenos Aires")
+				else if (lista_registros[i].get_provincia() == "Buenos Aires")
 				{
 					contBA++;
-				}else if (lista_registros[i]->get_provincia() == "Santa Fe")
+				}else if (lista_registros[i].get_provincia() == "Santa Fe")
 				{
 					contSantaFe++;
 				}
-				else if (lista_registros[i]->get_provincia() == "Cordoba")
+				else if (lista_registros[i].get_provincia() == "Cordoba")
 				{
 					contCordoba++;
-				}else if (lista_registros[i]->get_provincia() == "San Luis")
+				}else if (lista_registros[i].get_provincia() == "San Luis")
 				{
 					contSanLuis++;
 
-				}else if (lista_registros[i]->get_provincia() == "La Pampa")
+				}else if (lista_registros[i].get_provincia() == "La Pampa")
 				{
 					contLaPampa++;
-				}else if (lista_registros[i]->get_provincia() == "Misiones")
+				}else if (lista_registros[i].get_provincia() == "Misiones")
 				{
 					contMisiones++;
 				}
-				else if (lista_registros[i]->get_provincia() == "Corrientes")
+				else if (lista_registros[i].get_provincia() == "Corrientes")
 				{
 					contCorrientes++;
 				}
-				else if (lista_registros[i]->get_provincia() == "Entre Rios")
+				else if (lista_registros[i].get_provincia() == "Entre Rios")
 				{
 					contEntreRios++;
 
-				}else if (lista_registros[i]->get_provincia() == "Jujuy")
+				}else if (lista_registros[i].get_provincia() == "Jujuy")
 				{
 					contJujuy++;
-				}else if (lista_registros[i]->get_provincia() == "Salta")
+				}else if (lista_registros[i].get_provincia() == "Salta")
 				{
 					contSalta++;
-				}else if (lista_registros[i]->get_provincia() == "Tucuman")
+				}else if (lista_registros[i].get_provincia() == "Tucuman")
 				{
 					contTucuman++;
 				}
-				else if (lista_registros[i]->get_provincia() == "Santiago del Estero")
+				else if (lista_registros[i].get_provincia() == "Santiago del Estero")
 				{
 					contSantiago++;
-				}else if (lista_registros[i]->get_provincia() == "Catamarca")
+				}else if (lista_registros[i].get_provincia() == "Catamarca")
 				{
 					contCatamarca++;
-				}else if (lista_registros[i]->get_provincia() == "La Rioja")
+				}else if (lista_registros[i].get_provincia() == "La Rioja")
 				{
 					contLaRioja++;
-				}else if (lista_registros[i]->get_provincia() == "Chaco")
+				}else if (lista_registros[i].get_provincia() == "Chaco")
 				{
 					contChaco++;
-				}else if (lista_registros[i]->get_provincia() == "Formosa")
+				}else if (lista_registros[i].get_provincia() == "Formosa")
 				{
 					contFormosa++;
-				}else if (lista_registros[i]->get_provincia() == "San Juan")
+				}else if (lista_registros[i].get_provincia() == "San Juan")
 				{
 					contSanJuan++;
-				}else if (lista_registros[i]->get_provincia() == "Mendoza")
+				}else if (lista_registros[i].get_provincia() == "Mendoza")
 				{
 					contMend++;
-				}else if (lista_registros[i]->get_provincia() == "Chubut")
+				}else if (lista_registros[i].get_provincia() == "Chubut")
 				{
 					contChubut++;
-				}else if (lista_registros[i]->get_provincia() == "Neuquen")
+				}else if (lista_registros[i].get_provincia() == "Neuquen")
 				{
 					contNeuquen++;
-				}else if (lista_registros[i]->get_provincia() == "San Cruz")
+				}else if (lista_registros[i].get_provincia() == "San Cruz")
 				{
 					contSantCruz++;
-				}else if (lista_registros[i]->get_provincia() == "Tierra del Fuego")
+				}else if (lista_registros[i].get_provincia() == "Tierra del Fuego")
 				{
 					contTierraDelFuego++;
-				}else if (lista_registros[i]->get_provincia() == "Rio Negro")
+				}else if (lista_registros[i].get_provincia() == "Rio Negro")
 				{
 					contRioNegro++;
 				}

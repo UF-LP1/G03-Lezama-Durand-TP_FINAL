@@ -24,4 +24,6 @@ public:
 	void set_dni(string s);
 	void set_sexo(char s);
 	void set_fluido(cFluidos* s);
+	friend ostream& operator<<(ostream& out, cPaciente* element);
 };
+ostream& operator<<(ostream& out, cPaciente* element);

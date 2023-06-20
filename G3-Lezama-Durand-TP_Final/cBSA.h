@@ -3,12 +3,12 @@
 #include "cRegistro.h"
 
 class cBSA{
-	cVector<cCentro> lista_centro;
-	cVector<cRegistro*> lista_registros;
-	cVector<cReceptor*> posibles_receptores(cDonante* donante);
-	cVector<cReceptor*> lista_sangre(cDonante* donante);
-	cVector<cReceptor*> lista_plasma(cDonante* donante);
-	cVector<cReceptor*> lista_medula(cDonante* donante);
+	vector<cCentro> lista_centro;
+	vector<cRegistro> lista_registros;
+	vector<cReceptor> posibles_receptores(cDonante* donante);
+	vector<cReceptor> lista_sangre(cDonante* donante);
+	vector<cReceptor> lista_plasma(cDonante* donante);
+	vector<cReceptor> lista_medula(cDonante* donante);
 	cCentro ubicarDonante(cDonante d);
 public:
 	cBSA();
@@ -18,7 +18,7 @@ public:
 	cCentro protocolo(cReceptor receptor);
 	void Crear_Registro(cReceptor rp, cDonante rd, cCentro centro);
 	void buscar_receptor(string DNI);
-	cVector<cCentro> get_listacentro();
+	vector<cCentro> get_listacentro();
 	friend ostream& operator<<(ostream& out, cBSA& element);
 	void Buscar_receptor_imprimir(string DNI);
 	void Informar_Cant_provincia();
