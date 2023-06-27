@@ -1,6 +1,6 @@
 #include "cMedulaOsea.h"
 
-cMedulaOsea::cMedulaOsea(TipoS tipo, char rh, string HLA):cFluidos(tipo,rh)
+cMedulaOsea::cMedulaOsea(TipoS tipo, char rh, string HLA):cFluidos(tipo,rh,1)
 {
 	this->HLA = HLA;
 }
@@ -25,7 +25,7 @@ bool cMedulaOsea::tiempoMax(time_t extraccion)
 
 	int diferenciaDias = static_cast<int>(diferenciaSegundos / (24 * 60 * 60)); // convierto la diferencia a dias
 
-	if (diferenciaDias <= t_med)
+	if (diferenciaDias <= tiempo_max)
 		en_tiempo = true;
 
 	delete FECHA;

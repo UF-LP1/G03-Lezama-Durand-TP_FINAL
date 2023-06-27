@@ -1,12 +1,12 @@
 #include "cFluidos.h"
 
-cFluidos::cFluidos()
+cFluidos::cFluidos():tiempo_max(0)
 {
 	this->tipo = A;
 	this->RH = ' ';
 }
 
-cFluidos::cFluidos(TipoS tipo, char rh)
+cFluidos::cFluidos(TipoS tipo, char rh, int tiempo_max):tiempo_max(tiempo_max)
 {
 	this->tipo = tipo;
 	this->RH= rh;

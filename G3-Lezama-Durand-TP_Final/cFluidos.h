@@ -7,9 +7,11 @@ class cFluidos{
 protected:
 	TipoS tipo;
 	char RH;
+	const int tiempo_max;
+
 public:
 	cFluidos();
-	cFluidos(TipoS tipo, char rh);
+	cFluidos(TipoS tipo, char rh, int tiempo_max);
 	~cFluidos();
 	TipoS get_tipo();
 	virtual bool tiempoMax(time_t extraccion) = 0;

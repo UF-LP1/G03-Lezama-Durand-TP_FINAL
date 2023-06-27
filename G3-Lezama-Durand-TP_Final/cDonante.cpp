@@ -49,7 +49,6 @@ time_t cDonante::get_fextraccion()
 	return this->fecha_extraccion;
 }
 
-
 istream& operator>>(istream& in, cDonante& d)
 {
 		string s=" ";
@@ -69,9 +68,6 @@ istream& operator>>(istream& in, cDonante& d)
 		cout << "Ingrese el telefono del donante" << endl;
 		in >> s;
 		d.set_telefono(s);
-		cout << "Ingrese el DNI del donante" << endl;
-		in >> s;
-		d.set_dni(s);
 		cout << "Ingrese el sexo del donante" << endl;
 		in >> c;
 		d.set_sexo(c);
@@ -166,3 +162,5 @@ void cDonante::set_tatuaje(bool s)
 	this->tatuaje = s;
 	return;
 }
+
+

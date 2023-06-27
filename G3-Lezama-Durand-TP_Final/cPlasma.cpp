@@ -1,6 +1,6 @@
 #include "cPlasma.h"
 
-cPlasma::cPlasma(TipoS tipo, char rh) :cFluidos(tipo, rh)
+cPlasma::cPlasma(TipoS tipo, char rh) :cFluidos(tipo, rh,365)
 {
 
 }
@@ -25,7 +25,7 @@ bool cPlasma::tiempoMax(time_t extraccion)
 
 	int diferenciaDias = static_cast<int>(diferenciaSegundos / (24 * 60 * 60)); // convierto la diferencia a dias
 
-	if (diferenciaDias <= t_Plasma)
+	if (diferenciaDias <= tiempo_max)
 		en_tiempo = true;
 
 	delete FECHA;

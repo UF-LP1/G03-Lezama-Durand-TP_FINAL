@@ -8,10 +8,6 @@ cBSA::~cBSA()
 {
 }
 
-void cBSA::agregar_centro(cCentro centro)
-{
-	this->lista_centro.push_back(centro);
-}
 
 vector<cReceptor> cBSA::posibles_receptores(cDonante* donante)
 {
@@ -42,7 +38,7 @@ cPaciente* cBSA::match(cDonante* donante)
 	cCentro centro_donante=this->ubicarDonante(*donante);
 	cCentro centro_receptor;
 
-	sort(lista.begin(), lista.end(), myfunction);//ordeno la lista por prioridad
+	//sort(lista.begin(),lista.end(), myfunction);//ordeno la lista por prioridad
 
 	int i, pos = 0, cont=0;
 
@@ -52,7 +48,7 @@ cPaciente* cBSA::match(cDonante* donante)
 	{
 		for(i = 0;i < lista.size();i++)
 		{
-			centro_receptor =this->protocolo(lista[i]);
+			centro_receptor =this->protocolo(&lista[i]);
 
 			if (centro_donante == centro_receptor && cont==0)
 			{
@@ -67,7 +63,7 @@ cPaciente* cBSA::match(cDonante* donante)
 		return nullptr;
 }
 
-cCentro cBSA::protocolo(cReceptor receptor)
+cCentro cBSA::protocolo(cReceptor* receptor)
 {
 	cCentro centro;
 
@@ -75,7 +71,7 @@ cCentro cBSA::protocolo(cReceptor receptor)
 	{
 		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			if (receptor == &lista_centro[i].get_lista_donante()[k])
+			if (lista_centro[i].get_lista_receptor()[k] == receptor)
 			{
 				centro = lista_centro[i];
 			}
@@ -118,11 +114,11 @@ void cBSA::buscar_receptor(string DNI)
 {
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
-		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
+		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			if(this->lista_centro[i].lista_receptor[k].get_DNI()==DNI)
+			if(this->lista_centro[i].get_lista_receptor()[k].get_DNI()==DNI)
 			{
-				cout << &lista_centro[i].lista_receptor[k];
+				cout << &lista_centro[i].get_lista_receptor()[k];
 			}
 		}
 	}
@@ -141,12 +137,13 @@ vector<cReceptor> cBSA::lista_sangre(cDonante* donante){
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
-		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
+		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cSangre*>(this->lista_centro[i].lista_receptor[k].get_fluido());
-			if(aux!=nullptr  && lista[i].get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cSangre*>(this->lista_centro[i].get_lista_receptor()[k].get_fluido());
+			
+			if(aux!=nullptr  && lista_centro[i].get_lista_receptor()[k].get_fluido() == donante->get_fluido())
 			{
-				lista.push_back (lista_centro[i].lista_receptor[k]);
+				lista.push_back(lista_centro[i].get_lista_receptor()[k]);
 			}
 		}
 	}
@@ -159,12 +156,12 @@ vector<cReceptor> cBSA::lista_plasma(cDonante* donante)
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
-		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
+		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cPlasma*>(lista_centro[i].lista_receptor[k].get_fluido());
-			if (aux != nullptr && lista[i].get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cPlasma*>(lista_centro[i].get_lista_receptor()[k].get_fluido());
+			if (aux != nullptr&& lista_centro[i].get_lista_receptor()[k].get_fluido() == donante->get_fluido())
 			{
-				lista .push_back (lista_centro[i].lista_receptor[k]);
+				lista.push_back(lista_centro[i].get_lista_receptor()[k]);
 			}
 		}
 	}
@@ -177,12 +174,12 @@ vector<cReceptor> cBSA::lista_medula(cDonante* donante)
 
 	for (int i = 0;i < this->lista_centro.size();i++)
 	{
-		for (int k = 0;k < this->lista_centro[i].lista_receptor.size();k++)
+		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
-			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].lista_receptor[k].get_fluido());
-			if (aux != nullptr && lista[i].get_fluido() == donante->get_fluido())
+			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].get_lista_receptor()[k].get_fluido());
+			if (aux != nullptr && lista_centro[i].get_lista_receptor()[k].get_fluido() == donante->get_fluido())
 			{
-				lista.push_back (lista_centro[i].lista_receptor[k]);
+				lista.push_back(lista_centro[i].get_lista_receptor()[k]);
 			}
 		}
 	}
@@ -367,4 +364,9 @@ void cBSA::Informar_Cant_provincia()
 	cout << "Santiago del Estero: " << contSantiago << endl << endl;
 	
 	return;
+}
+
+void cBSA::operator+(cCentro centro)
+{
+	this->lista_centro.push_back(centro);
 }

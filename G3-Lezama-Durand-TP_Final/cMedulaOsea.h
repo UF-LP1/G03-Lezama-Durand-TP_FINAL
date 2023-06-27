@@ -1,8 +1,6 @@
 #pragma once
 #include "cFluidos.h"
 
-#define t_med 1
-
 class cMedulaOsea : public cFluidos {
 private:
 	string HLA;

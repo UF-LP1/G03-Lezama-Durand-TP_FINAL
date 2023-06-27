@@ -74,9 +74,6 @@ istream& operator>>(istream& in, cReceptor& r)
 	r.set_telefono(s);
 	cout << "Ingrese el DNI del receptor" << endl;
 	in >> s;
-	r.set_dni(s);
-	cout << "Ingrese el sexo del receptor" << endl;
-	in >> d;
 	r.set_sexo(d);
 	cout << "Ingrese el estado del receptor" << endl;
 	in >> e;

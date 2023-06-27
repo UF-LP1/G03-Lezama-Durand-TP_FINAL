@@ -5,13 +5,11 @@ cPaciente::cPaciente()
 	this->nombre=" ";
 	this->fecha_nac = " ";
 	this->telefono = ""; 
-	this->DNI=" ";
 }
 
-cPaciente::cPaciente(string nombre, string fecha, string tel, string dni, char sexo, cFluidos* fluido): fluido(fluido)
+cPaciente::cPaciente(string nombre, string fecha, string tel, string DNI, char sexo, cFluidos* fluido): fluido(fluido), DNI(DNI)
 {
 	this->nombre = nombre;
-	this->DNI = dni;
 	this->fecha_nac = fecha;
 	this->telefono = tel;
 }
@@ -54,11 +52,6 @@ void cPaciente::set_telefono(string s)
 	return;
 }
 
-void cPaciente::set_dni(string s)
-{
-	this->DNI = s;
-	return;
-}
 
 void cPaciente::set_sexo(char s)
 {
@@ -88,6 +81,6 @@ ostream& operator<<(ostream& out, cPaciente* element) {
 		throw new exception{ "no se encontro paciente" };
 	}
 
-	out << element->get_nombre();
+	out << element->to_string()<<endl;
 	return out;
 }

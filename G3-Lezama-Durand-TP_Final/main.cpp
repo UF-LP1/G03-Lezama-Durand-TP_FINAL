@@ -43,7 +43,7 @@ int main()
 	//creamos receptores 
 		cReceptor valentina("Valentina", "02/09/2010", "1123654789", "96159664", 'F', inestable, 546844, 1, &Med_A);
 		cReceptor flor("Flor", "04/10/2012", "1121549865", "96369745", 'F', inestable, 546844, 1, &Plasma_AB);
-		cReceptor saumuel("Samuel", "23/02/2001", "1147586936", "96458632", 'M', inestable, 546844, 1, &Med_B);
+		cReceptor saumuel("Samuel", "23/02/2001", "1147586936", "96458632", 'M', inestable, 546844, 1, &A_pos);
 		cReceptor Daniel("Daniel", "13/11/2006", "11201256987", "44226688", 'M', estable, 546844, 1, &A_pos);
 		cReceptor Romelia("Romelia", "29/12/2009", "1100325689", "37022559", 'F', estable, 546844, 1, &Bmen);
 		cReceptor Juana("Juana", "22/10/1993", "1147586930", "3799229", 'F', inestable, 546844, 1, &ABpos);
@@ -61,49 +61,53 @@ int main()
 		cReceptor Sofia("Sofia", "25/06/2014", "112886789", "45366228", 'F', inestable, 546844, 1, &Med_A);
 
 	//agregamos los donantes a la lista de centros
-		centro_favaloro.agregarDonante(Emilia);
-		centro_Adrogue.agregarDonante(Maria);
-		centro_Salud.agregarDonante(Camila);
-		centro_SanMartin.agregarDonante(isabella);
-		centro_Corazon.agregarDonante(Saul);
-		centro_CruzRoja.agregarDonante(lorenzo);
-		centro_Saavedra.agregarDonante(renata);
-		centro_LaVida.agregarDonante(juan);
-		centro_Sanacion.agregarDonante(gustavo);
+		centro_favaloro+(Emilia);
+		centro_Adrogue+(Maria);
+		centro_Salud+(Camila);
+		centro_SanMartin+(isabella);
+		centro_Corazon+(Saul);
+		centro_CruzRoja+(lorenzo);
+		centro_Saavedra+(renata);
+		centro_LaVida+(juan);
+		centro_Sanacion+(gustavo);
+
+	
+	//agregamos receptores a la lista de centros
+		centro_favaloro+(valentina);
+		centro_SanMartin+(flor);
+		centro_Corazon+(saumuel);
+		centro_Adrogue+(Daniel);
+		centro_SanMiguel+(Romelia);
+		centro_CruzRoja+(Juana);
+		centro_Salud+(Gabriel);
+		centro_Saavedra+(Olivia);
+		centro_LaVida+(Selena);
+		centro_Sanacion+(Franco);
+		centro_favaloro+(Julieta);
+		centro_SanMartin+(Javier);
+		centro_Corazon+(Tobias);
+		centro_Adrogue+(Josefina);
+		centro_SanMartin+(Julian);
+		centro_Salud+(Enzo);
+		centro_SanMiguel+(Harry);
+		centro_CruzRoja+(Sofia);
 
 	//agregamos centros a la lista de BSA
-		BSA.agregar_centro(centro_favaloro);
-		BSA.agregar_centro(centro_SanMartin);
-		BSA.agregar_centro(centro_Adrogue);
-		BSA.agregar_centro(centro_Corazon);
-		BSA.agregar_centro(centro_CruzRoja);
-		BSA.agregar_centro(centro_LaVida);
-		BSA.agregar_centro(centro_Saavedra);
-		BSA.agregar_centro(centro_Salud);
-		BSA.agregar_centro(centro_Sanacion);
-		BSA.agregar_centro(centro_SanMiguel);
+		BSA+(centro_favaloro);
+		BSA+(centro_SanMartin);
+		BSA+(centro_Adrogue);
+		BSA+(centro_Corazon);
+		BSA+(centro_CruzRoja);
+		BSA+(centro_LaVida);
+		BSA+(centro_Saavedra);
+		BSA+(centro_Salud);
+		BSA+(centro_Sanacion);
+		BSA+(centro_SanMiguel);
 
-	//agregamos receptores a la lista de centros
-		centro_favaloro.agregarReceptor(valentina);
-		centro_SanMartin.agregarReceptor(flor);
-		centro_Corazon.agregarReceptor(saumuel);
-		centro_Adrogue.agregarReceptor(Daniel);
-		centro_SanMiguel.agregarReceptor(Romelia);
-		centro_CruzRoja.agregarReceptor(Juana);
-		centro_Salud.agregarReceptor(Gabriel);
-		centro_Saavedra.agregarReceptor(Olivia);
-		centro_LaVida.agregarReceptor(Selena);
-		centro_Sanacion.agregarReceptor(Franco);
-		centro_favaloro.agregarReceptor(Julieta);
-		centro_SanMartin.agregarReceptor(Javier);
-		centro_Corazon.agregarReceptor(Tobias);
-		centro_Adrogue.agregarReceptor(Josefina);
-		centro_SanMartin.agregarReceptor(Julian);
-		centro_Salud.agregarReceptor(Enzo);
-		centro_SanMiguel.agregarReceptor(Harry);
-		centro_CruzRoja.agregarReceptor(Sofia);
+		cPaciente* persona = nullptr;
+		persona = BSA.match(&Saul);
 
-		cPaciente* persona=nullptr;
+		//cPaciente* persona=nullptr;
 		int pos = 0;
 		bool bandera = true;
 
@@ -118,7 +122,7 @@ int main()
 			{
 			case 1:
 				cin >> centro;
-				BSA.agregar_centro(centro);
+				BSA+(centro);
 				break;
 			case 2:
 				cin >> donante;

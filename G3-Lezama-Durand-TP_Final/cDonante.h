@@ -21,6 +21,7 @@ public:
 	void set_peso(unsigned int s);
 	void set_enfermedad(bool s);
 	void set_tatuaje(bool s);
+
 	friend istream& operator>>(istream& in, cDonante& element);
 };
 

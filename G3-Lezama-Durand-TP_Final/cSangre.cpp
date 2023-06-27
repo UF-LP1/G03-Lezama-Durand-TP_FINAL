@@ -1,6 +1,6 @@
 #include "cSangre.h"
 
-cSangre::cSangre(TipoS tipo, char rh):cFluidos(tipo,rh)
+cSangre::cSangre(TipoS tipo, char rh):cFluidos(tipo,rh,42)
 {
 
 }
@@ -25,7 +25,7 @@ bool cSangre::tiempoMax(time_t extraccion)
 
 	int diferenciaDias = static_cast<int>(diferenciaSegundos / (24 * 60 * 60)); // convierto la diferencia a dias
 
-	if (diferenciaDias <= t_max)
+	if (diferenciaDias <= tiempo_max)
 		en_tiempo = true;
 
 	delete FECHA;
@@ -36,7 +36,7 @@ bool cSangre::tiempoMax(time_t extraccion)
 string cSangre::to_string() {
 	stringstream ss;
 	char comma = ',';
-	ss << "Tipo de sangre: " << this->tipo << comma << "Rh: " << this->RH << endl;
+	ss << "Tipo de sangre: "<< this->tipo << comma << "Rh: " << this->RH << endl;
 	return ss.str();
 }
 

@@ -14,15 +14,17 @@ class cBSA{
 public:
 	cBSA();
 	~cBSA();
-	void agregar_centro(cCentro centro);
+
 	cPaciente* match(cDonante* donante);
-	cCentro protocolo(cReceptor receptor);
+	cCentro protocolo(cReceptor *receptor);
 	void Crear_Registro(cReceptor rp, cDonante rd, cCentro centro);
 	void buscar_receptor(string DNI);
 	vector<cCentro> get_listacentro();
-	friend ostream& operator<<(ostream& out, cBSA& element);
 	void Buscar_receptor_imprimir(string DNI);
 	void Informar_Cant_provincia();
+
+	friend ostream& operator<<(ostream& out, cBSA& element);
+	void operator+(cCentro centro);
 };
 
 ostream& operator<<(ostream& out, cBSA& element);

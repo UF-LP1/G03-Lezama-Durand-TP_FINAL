@@ -1,8 +1,6 @@
 #pragma once
 #include "cFluidos.h"
 
-#define t_max 42
-
 class cSangre : public cFluidos {
 
 public:
