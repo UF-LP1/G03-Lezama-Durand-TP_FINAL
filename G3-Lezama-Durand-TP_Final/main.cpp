@@ -3,7 +3,9 @@
 int menu();
 int main()
 {
+
 	cBSA BSA;
+	time_t tiempo_actual = time(nullptr);
 
 	//creamos fluidos
 		cSangre Bmen(B, '-');
@@ -30,15 +32,16 @@ int main()
 	
 
 	//cremos donantes
-		cDonante Saul("Saul", "18/09/2003", "1123654789", "961596640", 'M', 19, 60, false, false, &A_pos);
-		cDonante Maria("Maria", "30/07/2003", "112614589", "45289745", 'F', 19, 51, false, true, &Med_A);
-		cDonante Emilia("Emilia", "21/02/2003", "154789632", "45896214", 'F', 19, 55, false, false, &Bmen);
-		cDonante Camila("Camila", "21/02/2004", "1125897413", "44236589", 'F', 18, 57, false, false, &Plasma_A);
-		cDonante isabella("Isabella", "05/10/2003", "8569741233", "961596640", 'F', 19, 55, false, false, &Med_AB);
-		cDonante lorenzo("lorenzo", "28/08/2003", "43366552", "96212326", 'M', 19, 60, false, false, &A_pos);
-		cDonante renata("Renata", "23/ 07 / 2002", "112614589", "45289745", 'F', 19, 51, false, true, &Med_A);
-		cDonante juan("Juan", "25/11/2009", "154789632", "45236874", 'M', 19, 55, false, false, &Bmen);
-		cDonante gustavo("Gustavo", "29/07/2004", "11258975", "44236589", 'M', 18, 63, false, false, &Plasma_A);
+		cDonante Saul("Saul", "18/09/2003", "1123654789", "961596640", 'M', 19, 60, false, false, &A_pos, tiempo_actual);
+		cDonante Maria("Maria", "30/07/2003", "112614589", "45289745", 'F', 19, 51, false, true, &Med_A, tiempo_actual);
+		cDonante Emilia("Emilia", "21/02/2003", "154789632", "45896214", 'F', 19, 55, false, false, &Bmen, tiempo_actual);
+		cDonante Camila("Camila", "21/02/2004", "1125897413", "44236589", 'F', 18, 57, false, false, &Plasma_A, tiempo_actual);
+		cDonante isabella("Isabella", "05/10/2003", "8569741233", "961596640", 'F', 19, 55, false, false, &Med_AB, tiempo_actual);
+		cDonante lorenzo("lorenzo", "28/08/2003", "43366552", "96212326", 'M', 19, 60, false, false, &A_pos, tiempo_actual);
+		cDonante renata("Renata", "23/ 07 / 2002", "112614589", "45289745", 'F', 19, 51, false, true, &Med_A, tiempo_actual);
+		cDonante juan("Juan", "25/11/2009", "154789632", "45236874", 'M', 19, 55, false, false, &Bmen, tiempo_actual);
+		cDonante gustavo("Gustavo", "29/07/2004", "11258975", "44236589", 'M', 18, 63, false, false, &Plasma_A, tiempo_actual);
+		cDonante lupe("Guadalupe", "29/07/2004", "11258975", "44236589", 'M', 18, 63, false, false, &Plasma_A, tiempo_actual);
 
 	//creamos receptores 
 		cReceptor valentina("Valentina", "02/09/2010", "1123654789", "96159664", 'F', inestable, 546844, 1, &Med_A);
@@ -70,7 +73,7 @@ int main()
 		centro_Saavedra+(renata);
 		centro_LaVida+(juan);
 		centro_Sanacion+(gustavo);
-
+		centro_SanMiguel + lupe;
 	
 	//agregamos receptores a la lista de centros
 		centro_favaloro+(valentina);
@@ -104,7 +107,7 @@ int main()
 		BSA+(centro_Sanacion);
 		BSA+(centro_SanMiguel);
 
-		cPaciente* persona = nullptr;
+		cPaciente* persona;
 		persona = BSA.match(&Saul);
 
 		//cPaciente* persona=nullptr;
@@ -171,25 +174,31 @@ int main()
 				}
 				break;
 			case 8:
-				for (int i = 0;BSA.get_listacentro().size();i++)
+				for (int i = 0;i<BSA.get_listacentro().size();i++)
 				{
 					for (int k = 0;k < BSA.get_listacentro()[i].get_lista_donante().size();k++)
 					{
 						persona = BSA.match(&BSA.get_listacentro()[i].get_lista_donante()[k]);
-						pos = k;
-					}
 
-					if (persona == nullptr)
-					{
-						cout << "no se encontro donardor";
-					}
-					else
-					{
-						BSA.get_listacentro()[i].realizar_transfusion(persona, BSA.get_listacentro()[i].get_lista_donante()[pos]);
+						if (persona == nullptr)
+						{
+							cout << "el donante: " << BSA.get_listacentro()[i].get_lista_donante()[pos].get_nombre() << " no es compatible un paciente" << endl;
+						}
+						else if(BSA.get_listacentro()[i].realizar_transfusion(persona, BSA.get_listacentro()[i].get_lista_donante()[pos]))
+						{
+							cout <<"viva"<<endl;
+						}
+						else
+						{
+							cout << "muerto" << endl;
+						}
 					}
 				}
+				break;
+
 			case 9:
 				BSA.Informar_Cant_provincia();
+				break;
 			default:
 				break;
 			}

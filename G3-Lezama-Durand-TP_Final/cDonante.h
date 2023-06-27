@@ -8,7 +8,8 @@ private:
 	time_t fecha_extraccion;// la fecha de extraccion en segundos
 public:
 	cDonante(string nombre, string fecha, string tel, string dni, char sexo, unsigned int edad, 
-	unsigned int peso, bool enfermedad,bool tatuaje, cFluidos* fluido);
+	unsigned int peso, bool enfermedad,bool tatuaje, cFluidos* fluido, time_t fecha_extraccion);
+
 	cDonante();
 	~cDonante();
 	unsigned int get_edad();
@@ -21,7 +22,6 @@ public:
 	void set_peso(unsigned int s);
 	void set_enfermedad(bool s);
 	void set_tatuaje(bool s);
-
 	friend istream& operator>>(istream& in, cDonante& element);
 };
 

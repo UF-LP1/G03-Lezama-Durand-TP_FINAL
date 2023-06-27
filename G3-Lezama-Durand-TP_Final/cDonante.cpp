@@ -1,13 +1,13 @@
 #include "cDonante.h"
 
 cDonante::cDonante(string nombre, string fecha, string tel, string dni, char sexo, unsigned int edad, unsigned int peso,
-	bool enfermedad, bool tatuaje, cFluidos* fluido):
+	bool enfermedad, bool tatuaje, cFluidos* fluido, time_t fecha_extraccion):
 	cPaciente(nombre, fecha, tel, dni, sexo, fluido) {
 	this->edad = edad;
 	this->peso = peso;
 	this->enfermedad = enfermedad;
 	this->tatuaje = tatuaje;
-	this->fecha_extraccion = 0;
+	this->fecha_extraccion = fecha_extraccion;
 }
 
 cDonante::cDonante()

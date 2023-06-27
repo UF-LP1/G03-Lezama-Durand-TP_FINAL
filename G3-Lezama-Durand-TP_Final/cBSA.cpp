@@ -42,7 +42,7 @@ cPaciente* cBSA::match(cDonante* donante)
 
 	int i, pos = 0, cont=0;
 
-	cPaciente* persona=0;
+	cPaciente* persona=nullptr;
 
 	if (!(lista.empty()))
 	{
@@ -56,11 +56,10 @@ cPaciente* cBSA::match(cDonante* donante)
 				cont++;
 			}
 		}
-
 		return persona;
 	}
 	else
-		return nullptr;
+		return persona;
 }
 
 cCentro cBSA::protocolo(cReceptor* receptor)
@@ -177,6 +176,7 @@ vector<cReceptor> cBSA::lista_medula(cDonante* donante)
 		for (int k = 0;k < this->lista_centro[i].get_lista_receptor().size();k++)
 		{
 			cFluidos* aux = dynamic_cast<cMedulaOsea*>(lista_centro[i].get_lista_receptor()[k].get_fluido());
+
 			if (aux != nullptr && lista_centro[i].get_lista_receptor()[k].get_fluido() == donante->get_fluido())
 			{
 				lista.push_back(lista_centro[i].get_lista_receptor()[k]);

@@ -1,2 +1,15 @@
 ﻿  cBSA.cpp
+  cCentro.cpp
+C:\Users\USUARIO\Desktop\facutald\2do año\Nueva carpeta (7)\G3-Lezama-Durand-TP_Final\cCentro.cpp(113,19): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  cDonante.cpp
+  cFluidos.cpp
+  cMedulaOsea.cpp
+  cPaciente.cpp
+  cPlasma.cpp
+  cReceptor.cpp
+  cRegistro.cpp
+  cSangre.cpp
+  cVector.cpp
+  main.cpp
+  Generando código...
   G3-Lezama-Durand-TP_Final.vcxproj -> C:\Users\USUARIO\Desktop\facutald\2do año\Nueva carpeta (7)\x64\Debug\G3-Lezama-Durand-TP_Final.exe
