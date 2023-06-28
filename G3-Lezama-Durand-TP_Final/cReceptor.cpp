@@ -56,36 +56,34 @@ void cReceptor::set_fechaLE(time_t s)
 
 istream& operator>>(istream& in, cReceptor& r)
 {
-	string s=" ";
-	char d=' ';
-	unsigned int p=0;
-	int e=0;
-	int tipo_sangre=0 ;
-	char rh=' ';
+	string nombre, fecha, telefono, fluido, opcion;
+	char sexo;
+	int estado, prioridad = 0;
+	int tipo_sangre = 0;
+	char rh = ' ';
 
 	cout << "Ingrese el nombre del receptor" << endl;
-	in >> s;
-	r.set_nombre(s);
+	in >> nombre;
+
 	cout << "Ingrese la fecha de nacimiento del receptor" << endl;
-	in >> s;
-	r.set_fecha_nac(s);
+	in >> fecha;
+
 	cout << "Ingrese el telefono del receptor" << endl;
-	in >> s;
-	r.set_telefono(s);
-	cout << "Ingrese el DNI del receptor" << endl;
-	in >> s;
-	r.set_sexo(d);
+	in >> telefono;
+
+	cout << "Ingrese el sexo del receptor" << endl;
+	in >> sexo;
+
 	cout << "Ingrese el estado del receptor" << endl;
-	in >> e;
-	r.set_estado(tipoE(e));
+	in >> estado;
+
 	cout << "Ingrese la prioridad del receptor" << endl;
-	in >> p;
-	r.set_prioridad(p);
+	in >> prioridad;
 
 	cout << "ingrese que fluido necesita recibir: sangre/Medula Osea/Plasma " << endl;
-	in >> s;
+	in >> fluido;
 
-	if (s == "sangre")
+	if (fluido == "sangre")
 	{
 		cout << "ingrese su tipo de sangre y rh: " << endl;
 		in >>tipo_sangre>>rh;
@@ -93,7 +91,7 @@ istream& operator>>(istream& in, cReceptor& r)
 		cSangre sangre(TipoS(tipo_sangre), rh);
 		r.set_fluido(&sangre);
 	}
-	else if (s == "Plasma")
+	else if (fluido == "Plasma")
 	{
 		cout << "ingrese su tipo de sangre y rh: " << endl;
 		in >> tipo_sangre >> rh;
@@ -106,6 +104,13 @@ istream& operator>>(istream& in, cReceptor& r)
 		cMedulaOsea Med(TipoS(tipo_sangre), rh,"HLA-A");
 		r.set_fluido(&Med);
 	}
+
+	r.set_nombre(nombre);
+	r.set_fecha_nac(fecha);
+	r.set_telefono(telefono);
+	r.set_sexo(sexo);
+	r.set_estado(tipoE(estado));
+	r.set_prioridad(prioridad);
 
 	return in;
 }

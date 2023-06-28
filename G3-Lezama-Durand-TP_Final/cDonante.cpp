@@ -51,51 +51,67 @@ time_t cDonante::get_fextraccion()
 
 istream& operator>>(istream& in, cDonante& d)
 {
-		string s=" ";
-		char c=' ';
-		unsigned int p=0;
+		string nombre, fecha, telefono, fluido, opcion;
+		char sexo=' ';
+		unsigned int edad, peso=0;
 		int e=0;
 		int tipo_sangre=0;
 		char rh=' ';
-		bool b=false;
+		bool enfermedad, tatoo;
 
 		cout << "Ingrese el nombre del donante" << endl;
-		in >> s;
-		d.set_nombre(s);
+		in >> nombre;
+
 		cout << "Ingrese la fecha de nacimiento del donante" << endl;
-		in >> s;
-		d.set_fecha_nac(s);
+		in >> fecha;
+
 		cout << "Ingrese el telefono del donante" << endl;
-		in >> s;
-		d.set_telefono(s);
+		in >> telefono;
+
 		cout << "Ingrese el sexo del donante" << endl;
-		in >> c;
-		d.set_sexo(c);
+		in >> sexo;
+		
 		cout << "Ingrese la edad del donante" << endl;
-		in >> p;
-		d.set_edad(p);
+		in >> edad;
+
 		cout << "Ingrese el peso del donante" << endl;
-		in >> p;
-		d.set_peso(p);
-		cout << "Ingrese si el donante tiene una enfermedad: true para VERDADERO,false para FALSO" << endl;
-		in >> b;
-		d.set_enfermedad(b);
-		cout << "Ingrese si el donante se realizo un tatuaje en los ultimos dos meses: true para VERDADERO,false para FALSO" << endl;
-		in >> b;
-		d.set_tatuaje(b);
+		in >> peso;
+
+		cout << "Ingrese si el donante tiene una enfermedad: " << endl;
+		in >> opcion;
+		
+		if (opcion == "si")
+		{
+			enfermedad = true;
+		}
+		else
+		{
+			enfermedad = false;
+		}
+
+		cout << "Ingrese si el donante se realizo un tatuaje en los ultimos dos meses: " << endl;
+		in >> opcion;
+
+		if (opcion == "si")
+		{
+			tatoo = true;
+		}
+		else
+		{
+			tatoo = false;
+		}
 
 		cout << "ingrese que fluido necesita recibir: sangre/Medula Osea/Plasma " << endl;
-		in >> s;
+		in >> fluido;
 
-		if (s == "sangre")
+		if (fluido == "sangre")
 		{
 			cout << "ingrese su tipo de sangre y rh: " << endl;
 			in >> tipo_sangre >> rh;
-
 			cSangre sangre(TipoS(tipo_sangre), rh);
 			d.set_fluido(&sangre);
 		}
-		else if (s == "Plasma")
+		else if(fluido == "Plasma")
 		{
 			cout << "ingrese su tipo de sangre y rh: " << endl;
 			in >> tipo_sangre >> rh;
@@ -109,6 +125,15 @@ istream& operator>>(istream& in, cDonante& d)
 			cMedulaOsea Med(TipoS(tipo_sangre), rh, "HLA-A");
 			d.set_fluido(&Med);
 		}
+
+		d.set_nombre(nombre);
+		d.set_fecha_nac(fecha);
+		d.set_telefono(telefono);
+		d.set_sexo(sexo);
+		d.set_edad(edad);
+		d.set_peso(peso);
+		d.set_enfermedad(enfermedad);
+		d.set_tatuaje(tatoo);
 
 		return in;
 }

@@ -32,9 +32,8 @@ vector<cReceptor> cBSA::posibles_receptores(cDonante* donante)
 	return lista;
 }
 
-cPaciente* cBSA::match(cDonante* donante)
+cPaciente* cBSA::match(cDonante* donante, vector<cReceptor> *lista)
 {
-	vector<cReceptor> lista=posibles_receptores(donante);
 	cCentro centro_donante=this->ubicarDonante(*donante);
 	cCentro centro_receptor;
 
@@ -44,15 +43,15 @@ cPaciente* cBSA::match(cDonante* donante)
 
 	cPaciente* persona=nullptr;
 
-	if (!(lista.empty()))
+	if (!(lista->empty()))
 	{
-		for(i = 0;i < lista.size();i++)
+		for(i = 0;i < lista->size();i++)
 		{
-			centro_receptor =this->protocolo(&lista[i]);
+			centro_receptor =this->protocolo(&lista->at(i));
 
 			if (centro_donante == centro_receptor && cont==0)
 			{
-				persona = &lista[i];
+				persona = (&lista->at(i));
 				cont++;
 			}
 		}

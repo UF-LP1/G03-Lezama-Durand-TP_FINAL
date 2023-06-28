@@ -107,10 +107,8 @@ int main()
 		BSA+(centro_Sanacion);
 		BSA+(centro_SanMiguel);
 
-		cPaciente* persona;
-		persona = BSA.match(&Saul);
-
-		//cPaciente* persona=nullptr;
+		vector<cReceptor> lista;
+		cPaciente* persona =nullptr;
 		int pos = 0;
 		bool bandera = true;
 
@@ -129,9 +127,11 @@ int main()
 				break;
 			case 2:
 				cin >> donante;
+				centro_favaloro + donante;
 				break;
 			case 3:
 				cin >> receptor;
+				centro_favaloro + receptor;
 				break;
 			case 4:
 				cout << BSA;//usamos la sobrecarga de ostream
@@ -178,7 +178,8 @@ int main()
 				{
 					for (int k = 0;k < BSA.get_listacentro()[i].get_lista_donante().size();k++)
 					{
-						persona = BSA.match(&BSA.get_listacentro()[i].get_lista_donante()[k]);
+						lista = BSA.posibles_receptores(&BSA.get_listacentro()[i].get_lista_donante()[k]);
+						persona = BSA.match(&BSA.get_listacentro()[i].get_lista_donante()[k], &lista);
 
 						if (persona == nullptr)
 						{
@@ -186,11 +187,12 @@ int main()
 						}
 						else if(BSA.get_listacentro()[i].realizar_transfusion(persona, BSA.get_listacentro()[i].get_lista_donante()[pos]))
 						{
-							cout <<"viva"<<endl;
+							cout <<"el receptor: "<<persona->get_nombre()<<" recibio su tranfucion exitosamente de parte de:"<<
+								BSA.get_listacentro()[i].get_lista_donante()[k].get_nombre() << endl;
 						}
 						else
 						{
-							cout << "muerto" << endl;
+							cout << "el receptor: " << persona->get_nombre() << " no recibio su tranfucion exitosamente, su estado es urgente" << endl;
 						}
 					}
 				}
