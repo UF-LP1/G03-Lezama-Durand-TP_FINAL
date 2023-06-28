@@ -42,6 +42,8 @@ vector<cReceptor> cCentro::get_lista_receptor()
             lista_aux.push_back(*aux);
         }
     }
+
+    ordenar_lista(lista_aux);
     return lista_aux;
 }
 
@@ -60,17 +62,6 @@ vector<cDonante> cCentro::get_lista_donante()
     return lista_aux;
 }
 
-//void cCentro::eliminar_donante(cDonante* donante)
-//{
-//    for (int i = 0;i < this->get_lista_donante().size();i++)
-//    {
-//        if (this->get_lista_donante()[i] == donante)
-//        {
-//            //this->get_lista_donante().erase(this->get_lista_donante().begin() + i);
-//        }
-//    }
-//    return;
-//}
 
 vector<cPaciente*> cCentro::get_lista()
 {
@@ -99,11 +90,6 @@ void cCentro::condiciones_donante()
         }
     }
     return;
-}
-
-void cCentro::ordenar_prioridad()
-{
-    //sort(this->get_lista_receptor().begin(),this->get_lista_receptor().end(), myfunction);
 }
 
 bool cCentro::realizar_transfusion(cPaciente* Persona, cDonante donante)
@@ -175,7 +161,6 @@ void cCentro::operator-(cPaciente& persona)
     return;
 }
 
-
 void cCentro::listar_receptor()
 {
     for (int i = 0;i < this->get_lista_receptor().size();i++)
@@ -224,6 +209,35 @@ void cCentro::set_telefono(string s)
     return;
 }
 
+void ordenar_lista(vector<cReceptor>& lista)
+{
+    for (int i = 0;i < lista.size();i++)
+    {
+        for (int k = i;k < lista.size();k++)
+        {
+            if (myfunction(lista[i], lista[k]))
+            {
+                swap(lista[i], lista[k]);
+            }
+        }
+    }
+}
+
+bool myfunction(cReceptor r1, cReceptor r2)
+{
+    if (r1.get_prioridad() > r2.get_prioridad())
+    {
+        return true;
+    }
+    else if (r1.get_estado() > r2.get_estado()) {
+        return true;
+    }
+    else if (r1.get_fecha() > r2.get_fecha()) {
+        return true;
+    }
+    return false;
+}
+
 ostream& operator<<(ostream& out, cCentro& element)
 {
     out << element.to_string();
@@ -262,21 +276,6 @@ bool operator==(cCentro c1, cCentro c2)
         return true;
     else
         return false;
-}
-
-bool myfunction(cReceptor r1, cReceptor r2)
-{
-    if (r1.get_prioridad() > r2.get_prioridad())
-    {
-        return true;
-    }
-    else if (r1.get_estado() > r2.get_estado()) {
-        return true;
-    }
-    else if (r1.get_fecha() > r2.get_fecha()) {
-        return true;
-    }
-    return false;
 }
 
 void operator-(vector<cPaciente*> lista, cPaciente* persona)

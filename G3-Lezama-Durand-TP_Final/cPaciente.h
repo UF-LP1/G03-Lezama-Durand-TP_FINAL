@@ -7,9 +7,10 @@
 class cPaciente {
 protected:
 	string nombre, fecha_nac, telefono;
-	const string DNI;
+	string DNI;
 	char sexo;
 	cFluidos* fluido;
+
 public:
 	cPaciente();
 	cPaciente(string nombre, string fecha, string tel, string DNI, char sexo, cFluidos* fluido);

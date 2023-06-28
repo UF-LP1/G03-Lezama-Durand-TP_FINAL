@@ -4,11 +4,9 @@
 #include "cDonante.h"
 #include "cReceptor.h"
 
-bool myfunction(cReceptor r1, cReceptor r2);
-
 class cCentro {
 private:
-	string nombre, direccion, partido, provincia, telefono;
+	string nombre, direccion,telefono, partido, provincia;
 	friend class cBSA;
 	vector<cPaciente*> lista_pac;
 public:
@@ -21,7 +19,6 @@ public:
 	vector<cDonante> get_lista_donante();
 
 	void condiciones_donante();
-	void ordenar_prioridad();
 	void listar_receptor();
 	void listar_donante();
 	void set_nombre(string s);
@@ -46,7 +43,9 @@ public:
 
 };
 
+void ordenar_lista(vector <cReceptor>& lista);
 ostream& operator<<(ostream& out, cCentro& element);
 istream& operator>>(istream& in, cCentro& element);
 bool operator==(cCentro c1,cCentro c2);
 void operator-(vector<cPaciente*>lista, cPaciente* persona);
+bool myfunction(cReceptor r1, cReceptor r2);

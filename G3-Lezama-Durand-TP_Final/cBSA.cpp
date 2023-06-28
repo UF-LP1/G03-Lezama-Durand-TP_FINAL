@@ -1,5 +1,7 @@
 #include "cBSA.h"
 
+
+unsigned int cBSA::cant_centros=0;
 cBSA::cBSA()
 {
 }
@@ -37,7 +39,7 @@ cPaciente* cBSA::match(cDonante* donante, vector<cReceptor> *lista)
 	cCentro centro_donante=this->ubicarDonante(*donante);
 	cCentro centro_receptor;
 
-	//sort(lista.begin(),lista.end(), myfunction);//ordeno la lista por prioridad
+	ordenar_lista(*lista);
 
 	int i, pos = 0, cont=0;
 
@@ -368,4 +370,6 @@ void cBSA::Informar_Cant_provincia()
 void cBSA::operator+(cCentro centro)
 {
 	this->lista_centro.push_back(centro);
+	cant_centros++;
+	return;
 }

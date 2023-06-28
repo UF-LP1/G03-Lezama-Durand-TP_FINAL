@@ -3,6 +3,7 @@
 #include "cRegistro.h"
 
 class cBSA{
+	static unsigned int cant_centros;
 	vector<cCentro> lista_centro;
 	vector<cRegistro> lista_registros;
 	vector<cReceptor> lista_sangre(cDonante* donante);

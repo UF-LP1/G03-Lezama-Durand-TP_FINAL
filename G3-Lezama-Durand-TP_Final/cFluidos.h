@@ -5,7 +5,7 @@ enum TipoS{A=0,AB,B,O};
 
 class cFluidos{
 protected:
-	TipoS tipo;
+	const TipoS tipo;
 	char RH;
 	const int tiempo_max;
 
