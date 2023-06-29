@@ -1,6 +1,17 @@
 #include "cBSA.h"
 
+
+//hola fran (o cualquier otro ayudante) 
+//el const esta en el la clase fluidos y el static esta en el clase cBSA
+//ya nuestro programa funciona!!!! solo encuentra dos macth porque son solo dos los que son compatibles 
+//si queres que encuentre mas acomodalos, y encontrara mas!!
+//la sobrecarga de cin esta bella 
+//fue un dolor de cabeza la funcion de ordenar 
+//te sugiero que cuando deses buscar un receptor pongas este DNI:96159664
+//espero que les gueste el TP los hicomos con mucho cariño, saludos MARIA Y SAUL
+
 int menu();
+
 int main()
 {
 

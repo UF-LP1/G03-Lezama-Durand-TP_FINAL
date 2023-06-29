@@ -63,18 +63,18 @@ vector<cDonante> cCentro::get_lista_donante()
 }
 
 
-vector<cPaciente*> cCentro::get_lista()
+vector<cPaciente*> cCentro::get_lista()//obtengo la lista de pacinte 
 {
     return this->lista_pac;
 }
 
-void cCentro::condiciones_donante()
+void cCentro::condiciones_donante()//aqui usamos la sobrecarga del menos como metodo 
 {
     for (int i = 0;i < this->get_lista_donante().size();i++)
     {
         if ((this->get_lista_donante()[i]).get_edad() <= 18 && this->get_lista_donante()[i].get_edad() >= 65)
         {
-            this->lista_pac-&this->get_lista_donante()[i];
+            this->lista_pac - &this->get_lista_donante()[i];
         }
         else if (this->get_lista_donante()[i].get_peso() <= 50)
         {
